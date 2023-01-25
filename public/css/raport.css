@@ -1,0 +1,18 @@
+/* main .container{
+  display: flex;
+}
+main .main-content-body{
+  flex: 6;
+  margin-right: 30px;
+}
+main .aside-content-body{
+  flex: 3;
+}
+@media (max-width: 576px) { 
+  main .container{
+    flex-direction: column;
+  }
+  main .main-content-body{
+    margin-right: 0px;
+  }
+} */
