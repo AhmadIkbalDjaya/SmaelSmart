@@ -9,6 +9,7 @@
 nav.navbar{
   background: var(--darkBlue);
   color: var(--white);
+  /* position: fixed; */
 }
 nav a{
   text-decoration: none;
@@ -36,7 +37,11 @@ nav label{
 
 
 /* sidebar */
-.main-content-sidebar{
+.sidebar ul a.active-page{
+  padding-left: 55px;
+  background: #394263;
+}
+.content-sidebar{
   list-style: none;
   text-decoration: none;
   margin: 0;
@@ -45,6 +50,7 @@ nav label{
 .sidebar{
   height: 100vh;
   left: -255px;
+  top: 56px;
   width: 250px;
   position: fixed;
   background: var(--darkBlue);
@@ -77,11 +83,38 @@ nav label{
 .sidebar ul a i{
   margin-right: 15px;
 }
-/* end sidebar */
-main{
-  transition: all .5s;
+.line-sidebar{
+  color: var(--grey);
+  font-weight: bold;
 }
 
+/* end sidebar */
+
+/* main */
+main{
+  transition: all .5s;
+  min-height: 100vh;
+  margin-top: 75px;
+}
+main .container{
+  display: flex;
+}
+main .main-content-body{
+  flex: 6;
+  margin-right: 30px;
+}
+main .aside-content-body{
+  flex: 3;
+}
+@media (max-width: 576px) { 
+  main .container{
+    flex-direction: column;
+  }
+  main .main-content-body{
+    margin-right: 0px;
+  }
+}
+/* end main */
 
 #humbergermenu:checked ~ .sidebar{
   left: 0;
@@ -89,3 +122,31 @@ main{
 #humbergermenu:checked ~ main{
   margin-left: 250px;
 }
+
+
+/* footer */
+.footer{
+  background: var(--darkBlue);
+  color: var(--white);
+}
+.footer a{
+  color: var(--white);
+  /* text-decoration: none; */
+}
+
+.footer-desc{
+  display: flex;
+  align-items: center;
+}
+
+.footer-info a:hover{
+  color: var(--grey);
+  text-decoration: none;
+}
+
+@media (max-width: 576px) {
+  .footer{
+    text-align: center;
+  }
+}
+/* end footer */
