@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('email');
             $table->string('phone');
             $table->enum('gender', ['Laki-laki', 'Perempuan']);
-            $table->string('photo');
+            $table->string('photo')->nullable();
             $table->timestamps();
         });
     }
