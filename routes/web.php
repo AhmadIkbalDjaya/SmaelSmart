@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\UserController;
 use App\Http\Controllers\LoginController;
 
 /*
@@ -40,3 +41,8 @@ Route::get('/control-card', function () {
 Route::get('/lesson', function () {
     return view('lesson');
 });
+
+Route::get('/profile/{user:username}', [UserController::class, 'index']);
+// Route::get('/profile', function () {
+//     return view('profile');
+// });
