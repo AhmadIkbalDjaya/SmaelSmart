@@ -33,6 +33,12 @@ nav label{
 .dropdown-menu{
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
+.logout-button{
+  border: none;
+  padding: 0;
+  margin: 0;
+  background: transparent;
+}
 /* end navbar */
 
 

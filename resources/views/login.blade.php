@@ -18,12 +18,23 @@
     <div class="login-box m-auto rounded-2">
       <h3>Login</h3>
       <hr>
-      <form>
+      <form action="/login" method="POST">
+        @csrf
         <div class="mb-3">
-          <input type="text" class="form-control" id="username">
+          <input type="text" name="username" class="form-control @error('username') is-invalid @enderror" id="username" value="{{ old('username') }}">
+          @error('username')
+          <div class="invalid-feedback">
+              {{ $message }}
+          </div>
+          @enderror
         </div>
         <div class="mb-3">
-          <input type="password" class="form-control" id="input password">
+          <input type="password" name="password" class="form-control @error('password') is-invalid @enderror" id="input password">
+          @error('password')
+          <div class="invalid-feedback">
+              {{ $message }}
+          </div>
+          @enderror
         </div>
         <div class="mb-3 form-check">
           <input type="checkbox" class="form-check-input" id="exampleCheck1">

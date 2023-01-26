@@ -18,7 +18,16 @@
         <ul class="dropdown-menu dropdown-menu-end mt-3">
           <li><a class="dropdown-item" href="#"><i class="fa-solid fa-user"></i> Profile</a></li>
           <li><a class="dropdown-item" href="#"><i class="fa-solid fa-gear"></i> Setting</a></li>
-          <li><a class="dropdown-item" href="#"><i class="fa-solid fa-right-from-bracket"></i> Logout</a></li>
+          <li>
+            <form action="/logout" method="post">
+              @csrf
+              <a class="dropdown-item"><i class="fa-solid fa-right-from-bracket"></i>
+                <button type="submit" class="logout-button">Logout</button>
+              </a>
+              {{-- <button type="submit"><i class="fa-solid fa-right-from-bracket"></i> Logout</button> --}}
+            </form>
+            {{-- <a class="dropdown-item" href="#"><i class="fa-solid fa-right-from-bracket"></i> Logout</a> --}}
+          </li>
         </ul>
       </div>
     </div>
