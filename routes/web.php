@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\LoginController;
 
@@ -15,9 +16,10 @@ use App\Http\Controllers\LoginController;
 |
 */
 
-Route::get('/', function () {
-    return view('home');
-})->middleware('auth');
+// Route::get('/', function () {
+//     return view('home');
+// })->middleware('auth');
+Route::get('/', [HomeController::class, 'index'])->middleware('auth');
 
 Route::get('/login', [LoginController::class, 'index'])->name('login')->middleware('guest');
 Route::post('/login', [LoginController::class, 'authenticate']);
@@ -38,8 +40,8 @@ Route::get('/control-card', function () {
     return view('control-card');
 });
 
-Route::get('/lesson', function () {
-    return view('lesson');
+Route::get('/course', function () {
+    return view('course');
 });
 
 Route::get('/profile/{user:username}', [UserController::class, 'index']);

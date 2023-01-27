@@ -5,7 +5,7 @@
       <label for="humbergermenu" class="me-4 ms-4">
         <i class="fa-solid fa-bars"></i>
       </label>
-      <a href="">
+      <a href="/">
         <span class="mb-0 h3">Navbar</span>
       </a>
     </div>

@@ -13,6 +13,10 @@
             Student
         @endif
       </p>
+      {{-- @foreach ($user_course as $c)
+          <p>{{ $c->course_name }}</p>
+          <p>{{ $c->id }}</p>
+      @endforeach --}}
     </div>
   </div>
   <ul class="content-sidebar main-content-sidebar">
@@ -23,10 +27,13 @@
   </ul>
   <hr class="mx-2 line-sidebar">
   <ul class="content-sidebar lesson-content-sidebar">
-    <li><a href="/lesson" class="{{ Request::is('lesson') ? 'active-page' : '' }}"><i class="fa-solid fa-book"></i> Matematika</a></li>
+    @foreach ($user_course as $uc)
+    <li><a href="/course" ><i class="fa-solid fa-book"></i> {{ $uc->course_name }}</a></li>
+    @endforeach
+    {{-- <li><a href="/lesson" class="{{ Request::is('lesson') ? 'active-page' : '' }}"><i class="fa-solid fa-book"></i> Matematika</a></li>
     <li><a href="" ><i class="fa-solid fa-book"></i> Fisika</a></li>
     <li><a href="" ><i class="fa-solid fa-book"></i> Kimia</a></li>
-    <li><a href="" ><i class="fa-solid fa-book"></i> Bahasa Inggris</a></li>
+    <li><a href="" ><i class="fa-solid fa-book"></i> Bahasa Inggris</a></li> --}}
   </ul>
 </div>
 <!-- end sidebar -->
