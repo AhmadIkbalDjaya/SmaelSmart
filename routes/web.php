@@ -20,7 +20,6 @@ use App\Http\Controllers\LoginController;
 //     return view('home');
 // })->middleware('auth');
 Route::get('/', [HomeController::class, 'index'])->middleware('auth');
-
 Route::get('/login', [LoginController::class, 'index'])->name('login')->middleware('guest');
 Route::post('/login', [LoginController::class, 'authenticate']);
 Route::post('/logout', [LoginController::class, 'logout']);
@@ -44,7 +43,7 @@ Route::get('/course', function () {
     return view('course');
 });
 
-Route::get('/profile/{user:username}', [UserController::class, 'index']);
+Route::get('/profile/{user:username}', [UserController::class, 'index'])->middleware('auth');
 // Route::get('/profile', function () {
 //     return view('profile');
 // });

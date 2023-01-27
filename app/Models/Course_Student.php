@@ -16,8 +16,12 @@ class Course_Student extends Model
     public function student(){
         return $this->belongTo(Student::class);
     }
-    public static function get_user_course(){
+    public static function get_student_course(){
         $user_course_id = Course_Student::where('student_id', Auth::user()->student->id)->get()->pluck('course_id');
         return Course::whereIn('id', $user_course_id)->get();
+    }
+    public static function get_teacher_course() {
+        $user_course = Teacher::Where('user_id', Auth::user()->id)->get()->pluck('id');
+        return Course::Where('course_teacher_id', $user_course)->get();
     }
 }

@@ -6,18 +6,22 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Models\Course_Student;
 use App\Models\Course;
+use App\Models\Teacher;
 
 class HomeController extends Controller
 {
     public function index() {
-        // $course_student_id = Course_Student::where('student_id', Auth::user()->student->id)->get()->pluck('course_id');
-        // $user_course_id = Course_Student::get_courseId_user();
-        // $user_course = Course::whereIn('id', $user_course_id)->get();
-
-        // dd($course);
         // return view('home');
+        if (Auth::user()->level == 3) {
+            $user_course = Course_Student::get_student_course();
+        } elseif(Auth::user()->level == 2){
+            $user_course = Course_Student::get_teacher_course();
+        } else {
+            $user_course =  null;
+        }
+        
         return view('home', [
-            "user_course" => Course_Student::get_user_course(),
+            "user_course" => $user_course,
         ]);
     }
 }
