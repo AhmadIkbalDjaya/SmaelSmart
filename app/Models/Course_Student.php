@@ -24,4 +24,13 @@ class Course_Student extends Model
         $user_course = Teacher::Where('user_id', Auth::user()->id)->get()->pluck('id');
         return Course::Where('course_teacher_id', $user_course)->get();
     }
+    public static function get_user_course(){
+        if (Auth::user()->level == 3) {
+            return Course_Student::get_student_course();
+        } elseif(Auth::user()->level == 2){
+            return Course_Student::get_teacher_course();
+        } else {
+            return  null;
+        }
+    }
 }

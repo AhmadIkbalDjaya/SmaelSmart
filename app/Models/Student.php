@@ -11,7 +11,7 @@ class Student extends Model
     protected $guarded = ['id'];
 
     public function user () {
-        return $this->hasOne(User::class);
+        return $this->belongsTo(User::class);
     }
     public function course_student(){
         return $this->hasMany(Course_Student::class);

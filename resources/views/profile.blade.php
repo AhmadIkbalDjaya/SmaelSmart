@@ -31,7 +31,7 @@
       <tr>
         <td>Nama</td>
         <td>:</td>
-        <td>{{ $user->name }}</td>
+        <td>{{ auth()->user()->name }}</td>
       </tr>
       <tr>
         <td>Jenis Kelamin</td>

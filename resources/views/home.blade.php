@@ -13,7 +13,7 @@
       <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Odit pariatur quasi dignissimos laudantium animi nam libero voluptas eaque blanditiis officiis excepturi, obcaecati odio, eligendi eveniet quaerat fugiat adipisci. Aut, officia?</p>
     </div>
     @if (auth()->user()->level != 1)
-    <div class="your-class-box border mb-3 p-1">
+    <div class="your-class-box box1 mb-3 p-1">
       <h3>Your Class</h3>
       <div class="row">
         @foreach ($user_course as $uc)

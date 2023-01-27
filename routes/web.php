@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\CourseController;
 
 /*
 |--------------------------------------------------------------------------
@@ -39,9 +40,10 @@ Route::get('/control-card', function () {
     return view('control-card');
 });
 
-Route::get('/course', function () {
-    return view('course');
-});
+// Route::get('/course', function () {
+//     return view('course');
+// });
+Route::get('/course/{course}', [CourseController::class, 'show'])->middleware('auth');
 
 Route::get('/profile/{user:username}', [UserController::class, 'index'])->middleware('auth');
 // Route::get('/profile', function () {

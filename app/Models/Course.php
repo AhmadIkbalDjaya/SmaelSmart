@@ -10,7 +10,7 @@ class Course extends Model
     use HasFactory;
     protected $guarded = ['id'];
     public function claass() {
-        return $this->belongTo(Claass::class);
+        return $this->belongsTo(Claass::class);
     }
     public function teacher() {
         return $this->belongsTo(Teacher::class);

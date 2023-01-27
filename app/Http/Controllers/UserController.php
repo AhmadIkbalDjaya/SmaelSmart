@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use App\Models\Course_Student;
 
 class UserController extends Controller
 {
@@ -15,7 +16,7 @@ class UserController extends Controller
         }
         return view('profile', [
             "title" => "Profile $user->name",
-            "user" => $user,
+            "user_course" => Course_Student::get_user_course(),
             "profile" => $profile,
         ]);
     }

@@ -29,7 +29,7 @@
   @if (auth()->user()->level != 1)
   <ul class="content-sidebar lesson-content-sidebar">
     @foreach ($user_course as $uc)
-    <li><a href="/course" ><i class="fa-solid fa-book"></i> {{ $uc->course_name }}</a></li>
+    <li><a href="/course/{{ $uc->id }}" ><i class="fa-solid fa-book"></i> {{ $uc->course_name }}</a></li>
     @endforeach
     {{-- <li><a href="/lesson" class="{{ Request::is('lesson') ? 'active-page' : '' }}"><i class="fa-solid fa-book"></i> Matematika</a></li> --}}
   </ul>

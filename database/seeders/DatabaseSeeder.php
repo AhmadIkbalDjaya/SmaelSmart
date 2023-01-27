@@ -91,17 +91,17 @@ class DatabaseSeeder extends Seeder
         Course::create([
             'claass_id' => 1,
             'course_name' => 'Fisika',
-            'course_teacher_id' => 1,
+            'teacher_id' => 1,
         ]);
         Course::create([
             'claass_id' => 1,
             'course_name' => 'Bahasa Inggris',
-            'course_teacher_id' => 2,
+            'teacher_id' => 2,
         ]);
         Course::create([
             'claass_id' => 1,
             'course_name' => 'Seni Budaya',
-            'course_teacher_id' => 3,
+            'teacher_id' => 3,
         ]);
 
         // course_student
