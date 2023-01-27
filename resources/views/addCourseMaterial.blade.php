@@ -24,28 +24,29 @@
       </table>
     </div>
   </div>
-  <div class="col-md-6">
+  <div class="col-md-12">
     <div class="container-fluid border py-2">
       <div class="head d-flex justify-content-between">
-        <h5 class="">Materi</h5>
-        @can('teacher')
-          <a href="/courseMaterial/add/{{ $course->id }}" class="btn btn-primary">Tambah Materi</a>
-        @endcan
+        <h5 class="">Upload Materi</h5>
       </div>
-      <ul class="">
-        <li>
-          <a href="" class="text-decoration-none">
-            Materi 1
-          </a>
-        </li>
-        <li></li>
-      </ul>
+      <div class="upload-file">
+        <form action="/courseMaterial/add" method="POST" enctype="multipart/form-data">
+          @csrf
+          <input type="hidden" name="teacher_id" value="{{ $course->teacher->id }}">
+          <input type="hidden" name="course_id" value="{{ $course->id }}">
+          <div class="mb-3">
+            <label for="Judul Materi" class="form-label">Judul Materi</label>
+            <input type="text" name="title" class="form-control" id="Judul Materi" placeholder="Judul Materi">
+          </div>
+          <div class="mb-3">
+            <label for="formFile" class="form-label">File</label>
+            <input class="form-control" type="file" name="file" id="formFile">
+          </div>
+          <button type="submit" name="submit" class="btn btn-primary mb-3">Tambah Materi</button>
+        </form>
+      </div>
     </div>
   </div>
-  <div class="col-md-6">
-    <div class="container-fluid border py-2">
-      <h5>Tugas</h5>
-    </div>
   </div>
   {{-- <div class="col-12 border py-5">
     <div class="container-fluid">

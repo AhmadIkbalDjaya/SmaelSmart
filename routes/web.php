@@ -5,6 +5,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\CourseController;
+use App\Http\Controllers\CourseMaterialController;
 
 /*
 |--------------------------------------------------------------------------
@@ -49,3 +50,6 @@ Route::get('/profile/{user:username}', [UserController::class, 'index'])->middle
 // Route::get('/profile', function () {
 //     return view('profile');
 // });
+// Route::get('/courseMaterial/{coursematerial}', [CourseMaterialController::class, '']);
+Route::get('/courseMaterial/add/{course}', [CourseMaterialController::class, 'create']);
+Route::post('/courseMaterial/add', [CourseMaterialController::class, 'store']);
