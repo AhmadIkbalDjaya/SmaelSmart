@@ -26,6 +26,13 @@
         <h5>{{ $material->title }}</h5>
         <a href="{{ asset('storage/'. $material->file) }}" download="{{ $material->title }}.pdf">Download Materi</a>
       </div>
+      @can('teacher')
+      <form action="/courseMaterial/{{ $material->id }}" method="post">
+        @method('delete')
+        @csrf
+        <button class="dropdown-item text-danger" onclick="return confirm('Are you sure?')"><i class="fa-regular fa-trash-can"></i> Hapus Materi</button>
+      </form>
+      @endcan
     </div>
   </div>
   <div class="col-md-12 mb-5">

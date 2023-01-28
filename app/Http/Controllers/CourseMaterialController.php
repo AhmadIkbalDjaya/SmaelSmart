@@ -6,6 +6,7 @@ use App\Models\CourseMaterial;
 use App\Models\Course_Student;
 use App\Models\Course;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class CourseMaterialController extends Controller
 {
@@ -104,6 +105,9 @@ class CourseMaterialController extends Controller
      */
     public function destroy(CourseMaterial $courseMaterial)
     {
-        //
+        Storage::delete($courseMaterial->file);
+        CourseMaterial::destroy($courseMaterial->id);
+        $course_id   = $courseMaterial->course_id;
+        return redirect("/course/$course_id");
     }
 }

@@ -54,3 +54,4 @@ Route::get('/profile/{user:username}', [UserController::class, 'index'])->middle
 Route::get('/courseMaterial/add/{course}', [CourseMaterialController::class, 'create']);
 Route::post('/courseMaterial/add', [CourseMaterialController::class, 'store']);
 Route::get('/courseMaterial/{courseMaterial}', [CourseMaterialController::class, 'show']);
+Route::delete('/courseMaterial/{courseMaterial}', [CourseMaterialController::class, 'destroy']);
