@@ -26,13 +26,16 @@
     <li><a href="/raport" class="{{ Request::is('raport') ? 'active-page' : '' }}"><i class="fa-sharp fa-solid fa-book"></i>Raport</a></li>
   </ul>
   <hr class="mx-2 line-sidebar">
-  @if (auth()->user()->level != 1)
   <ul class="content-sidebar lesson-content-sidebar">
-    @foreach ($user_course as $uc)
-    <li><a href="/course/{{ $uc->id }}" ><i class="fa-solid fa-book"></i> {{ $uc->course_name }}</a></li>
-    @endforeach
-    {{-- <li><a href="/lesson" class="{{ Request::is('lesson') ? 'active-page' : '' }}"><i class="fa-solid fa-book"></i> Matematika</a></li> --}}
+    @if (auth()->user()->level == 1)
+    <li><a href="/user/add" class="{{ Request::is('raport') ? 'active-page' : '' }}"><i class="fa-sharp fa-solid fa-book"></i>Add User</a></li>
+    @endif
+    
+    @if (auth()->user()->level != 1)
+      @foreach ($user_course as $uc)
+      <li><a href="/course/{{ $uc->id }}" ><i class="fa-solid fa-book"></i> {{ $uc->course_name }}</a></li>
+      @endforeach
+    @endif
   </ul>
-  @endif
 </div>
 <!-- end sidebar -->

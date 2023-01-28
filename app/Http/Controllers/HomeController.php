@@ -12,7 +12,7 @@ class HomeController extends Controller
 {
     public function index() {
         return view('home', [
-            "title" => "SmaelSmart",
+            "title" => "Smael Smart",
             "user_course" => Course_Student::get_user_course(),
         ]);
     }

@@ -26,7 +26,7 @@ use App\Http\Controllers\CourseMaterialController;
 // })->middleware('auth');
 Route::get('/', [HomeController::class, 'index'])->middleware('auth');
 Route::get('/login', [LoginController::class, 'index'])->name('login')->middleware('guest');
-Route::post('/login', [LoginController::class, 'authenticate'])->middleware('auth');
+Route::post('/login', [LoginController::class, 'authenticate']);
 Route::post('/logout', [LoginController::class, 'logout'])->middleware('auth');
 // Route::get('/login', function () {
 //     return view('login');
@@ -43,7 +43,7 @@ Route::get('/control-card', [ControlCardController::class, 'index'])->middleware
 // });
 Route::get('/course/{course}', [CourseController::class, 'show'])->middleware('auth');
 
-Route::get('/profile/{user:username}', [UserController::class, 'index'])->middleware('auth');
+Route::get('/profile/{user:username}', [UserController::class, 'profile'])->middleware('auth');
 // Route::get('/profile', function () {
 //     return view('profile');
 // });
@@ -52,3 +52,6 @@ Route::get('/courseMaterial/add/{course}', [CourseMaterialController::class, 'cr
 Route::post('/courseMaterial/add', [CourseMaterialController::class, 'store']);
 Route::get('/courseMaterial/{courseMaterial}', [CourseMaterialController::class, 'show']);
 Route::delete('/courseMaterial/{courseMaterial}', [CourseMaterialController::class, 'destroy']);
+
+Route::get('/user/add', [UserController::class, 'create']);
+Route::post('/user/add', [UserController::class, 'store']);
