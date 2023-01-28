@@ -29,6 +29,7 @@
   <ul class="content-sidebar lesson-content-sidebar">
     @if (auth()->user()->level == 1)
     <li><a href="/user/add" class="{{ Request::is('raport') ? 'active-page' : '' }}"><i class="fa-sharp fa-solid fa-book"></i>Add User</a></li>
+    <li><a href="/user" class="{{ Request::is('raport') ? 'active-page' : '' }}"><i class="fa-sharp fa-solid fa-book"></i>Manage User</a></li>
     @endif
     
     @if (auth()->user()->level != 1)

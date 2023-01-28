@@ -53,5 +53,11 @@ Route::post('/courseMaterial/add', [CourseMaterialController::class, 'store']);
 Route::get('/courseMaterial/{courseMaterial}', [CourseMaterialController::class, 'show']);
 Route::delete('/courseMaterial/{courseMaterial}', [CourseMaterialController::class, 'destroy']);
 
-Route::get('/user/add', [UserController::class, 'create']);
+Route::get('/user', [UserController::class, 'index'])->middleware('admin');
+Route::post('/user/update', [UserController::class, 'update'])->middleware('admin');
+Route::get('/user/add', [UserController::class, 'create'])->middleware('admin');
 Route::post('/user/add', [UserController::class, 'store']);
+
+// Route::get('user/{teacher:id}/{student:id}', [UserController::class, 'show'])->middleware('admin');
+Route::get('/user/{user:username}', [UserController::class, 'show'])->middleware('admin');
+Route::get('/user/edit/{user:username}', [UserController::class, 'edit'])->middleware('admin');

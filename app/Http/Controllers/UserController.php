@@ -24,6 +24,25 @@ class UserController extends Controller
         ]);
     }
 
+    public function index () {
+        return view('user', [
+            "title" => "Manage User",
+            "users" => User::whereNot('id', '1')->get(),
+        ]);
+    }
+
+    public function show(User $user) {
+        if($user->level == 3){
+            $profile = $user->student;
+        }elseif($user->level == 2){
+            $profile = $user->teacher;
+        }
+        return view('detail-user', [
+            "title" => "Detail " . $profile->user->name,
+            "profile" => $profile,
+        ]);
+    }
+
     public function create(){
         return view('user-add', [
             "title" => "Tambah User",
@@ -66,4 +85,86 @@ class UserController extends Controller
         return redirect('/');
     }
 
+    public function edit(User $user)
+    {
+        if($user->level == 3){
+            $profile = $user->student;
+        }elseif($user->level == 2){
+            $profile = $user->teacher;
+        }
+        return view('edit-user', [
+            "title" => "Edit User ".$profile->user->name,
+            "profile" => $profile,
+        ]);
+    }
+
+    public function update(Request $request){
+        $validated = $request->validate([
+            'username' => 'required|max:255',
+            'password' => '',
+            'name' => 'required|max:255',
+            'level' => 'required|in:2,3',
+            'email' => 'required|email',
+            'phone' => 'required|numeric|digits_between:10,12',
+            'gender' => 'required|in:Laki-laki,Perempuan',
+        ]);
+        // $teacher_id = Teacher::where('user_id', $request->user_id)->pluck('id')->first();
+        // dd($teacher_id);
+        // $student_id = Student::where('user_id', $request->user_id)->first()->pluck('id');
+        // dd($student_id);
+
+        if(!$request->password){
+            $validated['password'] = $request->passwordOld;
+        }else{
+            $validated['password'] = Hash::make($validated['password']);
+        }
+        $update_user = [
+            'username' => $validated['username'],
+            'password' => $validated['password'],
+            'name' => $validated['name'],
+            'level' => $validated['level'],
+        ];
+        $update_profile = [
+            'email' => $validated['email'],
+            'phone' => $validated['phone'],
+            'gender' => $validated['gender'],
+        ];
+        // dd($request->user_id);
+        // dd($validated['level']);
+        // dd($request->user_level);
+        User::where('id', $request->user_id)->update($update_user);
+
+        if($request->user_level == 3){
+            if($validated['level'] != $request->user_level){
+                // Teacher create & dan hapus data student berdasarka id
+                Teacher::create($update_profile);
+                Student::destroy($request->user_level);
+            }
+            else{
+                // ambil id student berdasarkan user id
+                // $student_id = $user->student->id;
+                $student_id = Student::where('user_id', $request->user_id)->pluck('id')->first();
+                // Student update
+                Student::where('id', $student_id)->update($update_profile);
+            }
+        }elseif($request->user_level == 2){
+            if($validated['level'] != $request->user_level){
+                // Student create
+                Student::create($update_profile);
+                Teacher::destroy($request->user_level);
+            }
+            else{
+                // $teacher_id = Teacher::where('user_id', $request->user_id)->first()->pluck('id');
+                $teacher_id = Teacher::where('user_id', $request->user_id)->pluck('id')->first();
+    
+                // Teacher update
+                Teacher::where('id', $teacher_id)->update($update_profile);
+            }
+        }
+        // if($validated['level'] != $request->user_level){
+        // }
+
+        // dd($validated['password']);
+        return redirect('/user');
+    }
 }
