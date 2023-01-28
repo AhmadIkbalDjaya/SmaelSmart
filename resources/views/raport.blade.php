@@ -7,7 +7,7 @@
 @endsection
 @section('main')
 <div class="container mx-auto row justify-content-between">
-  <div class="col-12 border d-flex justify-content-between mb-5">
+  <div class="col-12 box1 d-flex justify-content-between mb-5">
     <div class="col-md-6">
       <table class="table table-sm table-borderless">
         <tr>
@@ -52,10 +52,10 @@
       </table>
     </div>
   </div>
-  <div class="col-md-8 border capaian-kompetensi">
+  <div class="col-md-8 box1 capaian-kompetensi">
     <h5>Capaian Kompetensi</h5>
   </div>
-  <div class="col-md-3 border">
+  <div class="col-md-3 box1">
     <h5>Kehadiran</h5>
     <table class="table table-sm table-borderless">
       <tr>

@@ -8,13 +8,14 @@
 @section('main')
 <div class="container mx-auto row justify-content-between">
   <div class="col-12 my-4">
-    <div class="container-fluid border py-2">
+    <div class="container-fluid box1 py-2">
       <h3>Manage User</h3>
       <p>Tambah, Edit atau Hapus User</p>
+      <a href="/user/add" class="btn btn-primary">Tambah User</a>
     </div>
   </div>
   <div class="col-12 my-3">
-    <table class="table">
+    <table class="table box1">
       <thead>
         <tr>
           <th scope="col">No</th>

@@ -8,13 +8,13 @@
 @section('main')
 <div class="container mx-auto row justify-content-between">
   <div class="col-12 my-4">
-    <div class="container-fluid border py-2">
+    <div class="container-fluid box1 py-2">
       <h3>Tambahkan User</h3>
       <p>Tambah User baru pada sistem baik sebagai Guru atau Siswa</p>
     </div>
   </div>
   <div class="col-md-6 user-form">
-    <div class="container-fluid border py-2">
+    <div class="container-fluid box1 py-2">
       <form action="/user/add" method="post">
       @csrf
       <h5>User</h5>
@@ -38,7 +38,7 @@
     </div>
   </div>
   <div class="col-md-6 profile-form">
-    <div class="container-fluid border py-2">
+    <div class="container-fluid box1 py-2">
       <h5>Profile</h5>
       <div class="form-floating mb-3">
         <input type="email" name="email" class="form-control" id="floatingInput" placeholder="name@example.com">

@@ -7,7 +7,7 @@
 @endsection
 @section('main')
 <div class="container mx-auto row justify-content-between">
-  <div class="col-12 border mb-5 py-2">
+  <div class="col-12 box1 mb-5 py-2">
     {{-- <h1>Ahmad Ikbal Djaya</h1> --}}
     <div class="header-profile text-center d-flex p-3 justify-content-start px-4">
       <img src="/img/profil.jpg" alt="Profile" class="img-fluid rounded-circle me-2" width="100">
@@ -26,7 +26,7 @@
     </div>
     <a href="/user">Back To User</a>
   </div>
-  <div class="col-12 p-0 border p-3">
+  <div class="col-12 p-0 box1 p-3">
     <h4>Edit User</h4>
     <form action="/user/update" method="post">
     @csrf

@@ -8,7 +8,7 @@
 @section('main')
 <div class="container mx-auto row justify-content-between">
   <div class="col-12 my-4">
-    <div class="container-fluid border py-2">
+    <div class="container-fluid box1 py-2">
       <h3>{{ $course->course_name }}</h3>
       <table class="table table-sm table-borderless d-inline">
         <tr>
@@ -37,7 +37,7 @@
   </div>
   <div class="col-md-12 mb-5">
     <div class="container-fluid py-2">
-      <embed type="application/pdf" src="{{ asset('storage/'. $material->file) }}" height="900" style="width: 100%;"></embed>
+      <embed type="application/pdf" src="{{ asset('storage/'. $material->file) }}" height="900" class="w-100 box1"></embed>
     </div>
   </div>
   </div>

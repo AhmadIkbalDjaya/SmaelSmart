@@ -8,7 +8,7 @@
 @section('main')
 <div class="container mx-auto row justify-content-between">
   <div class="col-12 my-4">
-    <div class="container-fluid border py-2">
+    <div class="container-fluid box1 py-2">
       <h3>{{ $course->course_name }}</h3>
       <table class="table table-sm table-borderless d-inline">
         <tr>
@@ -25,7 +25,7 @@
     </div>
   </div>
   <div class="col-md-6">
-    <div class="container-fluid border py-2">
+    <div class="container-fluid box1 py-2">
       <div class="head d-flex justify-content-between">
         <h5 class="">Materi</h5>
         @can('teacher')
@@ -47,7 +47,7 @@
     </div>
   </div>
   <div class="col-md-6">
-    <div class="container-fluid border py-2">
+    <div class="container-fluid box1 py-2">
       <h5>Tugas</h5>
     </div>
   </div>

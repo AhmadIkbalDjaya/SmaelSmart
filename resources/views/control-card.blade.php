@@ -7,7 +7,7 @@
 @endsection
 @section('main')
 <div class="container mx-auto row justify-content-between">
-  <div class="col-12 border mb-5 py-2">
+  <div class="col-12 box1 mb-5 py-2">
     <h5>Kartu Kontrol</h5>
     <table class="table table-sm table-borderless d-inline">
       <tr>
@@ -27,7 +27,7 @@
     </span>
   </div>
   <div class="col-12 p-0">
-    <table class="table table-bordered">
+    <table class="table table-bordered box1">
       <thead>
         <tr>
           <th scope="col">No</th>
