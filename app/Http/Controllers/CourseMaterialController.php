@@ -43,14 +43,13 @@ class CourseMaterialController extends Controller
     {
         $validatedPost = $request->validate([
             'title' => 'required',
-            'file' => 'mimes:pdf',
+            'file' => 'required|mimes:pdf',
             'course_id' => 'required',
             'teacher_id' => 'required',
         ]);
         // dd($validatedPost);
-
         if($request->file('file')){
-            $validatedPost['file'] = $request->file('file')->store('files');
+            $validatedPost['file'] = $request->file('file')->storeAs('files', $validatedPost['title']);
         }
         CourseMaterial::create($validatedPost);
         $course_id = $validatedPost['course_id'];
@@ -65,7 +64,13 @@ class CourseMaterialController extends Controller
      */
     public function show(CourseMaterial $courseMaterial)
     {
-        //
+        // $coba = Course::where('id', $courseMaterial->course->id)->first();
+        // dd($coba);
+        return view('view-material', [
+            "user_course" => Course_Student::get_user_course(),
+            "course" => Course::where('id', $courseMaterial->course->id)->first(),
+            "material" => $courseMaterial 
+        ]);
     }
 
     /**

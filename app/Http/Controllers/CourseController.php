@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Course;
+use App\Models\CourseMaterial;
 use App\Models\Course_Student;
 use Illuminate\Http\Request;
 
@@ -48,8 +49,11 @@ class CourseController extends Controller
     public function show(Course $course)
     {
         // dd($course->id);
+        // $material = $course->courseMaterial;
+        // dd($material);
         return view('course', [
             "course" => $course,
+            "materials" => $course->courseMaterial,
             "user_course" => Course_Student::get_user_course(),
         ]);
     }

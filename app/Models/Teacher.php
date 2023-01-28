@@ -20,4 +20,7 @@ class Teacher extends Model
     public function course(){
         return $this->hasMany(Course::class);
     }
+    public function courseMaterial(){
+        return $this->hasMany(CourseMaterial::class);
+    }
 }
