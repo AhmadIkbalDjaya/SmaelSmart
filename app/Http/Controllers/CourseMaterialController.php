@@ -28,6 +28,7 @@ class CourseMaterialController extends Controller
     public function create(Course $course)
     {
         return view('addCourseMaterial',[
+            "title" => "Tambah Materi",
             "course" => $course,
             "user_course" => Course_Student::get_user_course(),
 
@@ -68,6 +69,7 @@ class CourseMaterialController extends Controller
         // $coba = Course::where('id', $courseMaterial->course->id)->first();
         // dd($coba);
         return view('view-material', [
+            "title" => 'Materi ' . $courseMaterial->course->course_name,
             "user_course" => Course_Student::get_user_course(),
             "course" => Course::where('id', $courseMaterial->course->id)->first(),
             "material" => $courseMaterial 

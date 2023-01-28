@@ -52,6 +52,7 @@ class CourseController extends Controller
         // $material = $course->courseMaterial;
         // dd($material);
         return view('course', [
+            "title" => "Course $course->course_name",
             "course" => $course,
             "materials" => $course->courseMaterial,
             "user_course" => Course_Student::get_user_course(),

@@ -5,6 +5,9 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\CourseController;
+use App\Http\Controllers\RaportController;
+use App\Http\Controllers\CalenderController;
+use App\Http\Controllers\ControlCardController;
 use App\Http\Controllers\CourseMaterialController;
 
 /*
@@ -23,23 +26,17 @@ use App\Http\Controllers\CourseMaterialController;
 // })->middleware('auth');
 Route::get('/', [HomeController::class, 'index'])->middleware('auth');
 Route::get('/login', [LoginController::class, 'index'])->name('login')->middleware('guest');
-Route::post('/login', [LoginController::class, 'authenticate']);
-Route::post('/logout', [LoginController::class, 'logout']);
+Route::post('/login', [LoginController::class, 'authenticate'])->middleware('auth');
+Route::post('/logout', [LoginController::class, 'logout'])->middleware('auth');
 // Route::get('/login', function () {
 //     return view('login');
 // });
 
-Route::get('/calender', function () {
-    return view('calender');
-})->middleware('admin');
+Route::get('/calender', [CalenderController::class, 'index'])->middleware('auth');
 
-Route::get('/raport', function () {
-    return view('raport');
-})->middleware('teacher');
+Route::get('/raport', [RaportController::class, 'index'])->middleware('auth');
 
-Route::get('/control-card', function () {
-    return view('control-card');
-});
+Route::get('/control-card', [ControlCardController::class, 'index'])->middleware('auth');
 
 // Route::get('/course', function () {
 //     return view('course');
