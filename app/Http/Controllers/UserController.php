@@ -3,10 +3,12 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Validation\Rule;
+
 use App\Models\User;
 use App\Models\Student;
 use App\Models\Teacher;
-use Illuminate\Support\Facades\Hash;
 use App\Models\Course_Student;
 
 class UserController extends Controller
@@ -106,8 +108,17 @@ class UserController extends Controller
 
 
     public function update(Request $request){
+        // dd($request["username"]);
+        // $username = $request["username"];
+        // dd($username);
         $validated = $request->validate([
-            'username' => 'required|max:255',
+            // 'username' => Rule::unique('users', 'username')->ignore($request->user_id), //ignore id rownya saja bukan nilai yang di ignore
+            'username' => ['required', Rule::unique('users', 'username')->ignore($request->user_id)], //ignore id rownya saja bukan nilai yang di ignore
+
+            // 'username' => Rule::unique('users')->where(fn ($query) => $query->where('username' ,$username)),
+            // 'username' => ['required', Rule::unique('users', 'username')->ignore($request->usernameOld)],
+            // 'username' => 'required|max:255',
+            // 'username' => "unique:users,username,$username",
             'password' => '',
             'name' => 'required|max:255',
             'level' => 'required|in:2,3',
@@ -115,6 +126,7 @@ class UserController extends Controller
             'phone' => 'required|numeric|digits_between:10,12',
             'gender' => 'required|in:Laki-laki,Perempuan',
         ]);
+        // dd($validated["username"]);
         // $teacher_id = Teacher::where('user_id', $request->user_id)->pluck('id')->first();
         // dd($teacher_id);
         // $student_id = Student::where('user_id', $request->user_id)->first()->pluck('id');

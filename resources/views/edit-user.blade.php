@@ -39,7 +39,12 @@
         <td>:</td>
         <td>
           <div class="mb-3">
-            <input type="text" name="username" class="form-control" id="username" value="{{ $profile->user->username }}">
+            <input type="text" name="username" class="form-control @error('username') is-invalid @enderror" id="username" value="{{ old('username', $profile->user->username) }}">
+            @error('username')
+              <div class="invalid-feedback">
+                  {{ $message }}
+              </div>
+            @enderror
           </div>
         </td>
       </tr>
@@ -48,7 +53,7 @@
         <td>:</td>
         <td>
           <div class="mb-3">
-            <input type="text" name="name" class="form-control" id="name" value="{{ $profile->user->name }}">
+            <input type="text" name="name" class="form-control" id="name" value="{{ old('name', $profile->user->name) }}">
           </div>
         </td>
       </tr>
@@ -67,13 +72,15 @@
         <td>:</td>
         <td>
           <select class="form-select" name="level" aria-label="Default select example">
-            @if ($profile->user->level==2)
+            <option value="2" {{ old('level', $profile->user->level) == '2' ? 'selected' : '' }}>Teacher</option>
+            <option value="3" {{ old('level', $profile->user->level) == '3' ? 'selected' : '' }}>Student</option>
+            {{-- @if ($profile->user->level==2)
             <option value="2" selected>Teacher</option>
             <option value="3">Student</option>
             @else
             <option value="2">Teacher</option>
             <option value="3" selected>Student</option>
-            @endif
+            @endif --}}
           </select>
         </td>
       </tr>
@@ -82,7 +89,7 @@
         <td>:</td>
         <td>
           <div class="mb-3">
-            <input type="email" name="email" class="form-control" id="email" value="{{ $profile->email }}">
+            <input type="email" name="email" class="form-control" id="email" value="{{ old('email', $profile->email) }}">
           </div>
         </td>
       </tr>
@@ -91,7 +98,7 @@
         <td>:</td>
         <td>
           <div class="mb-3">
-            <input type="text" name="phone" class="form-control" id="phone" value="{{ $profile->phone }}">
+            <input type="text" name="phone" class="form-control" id="phone" value="{{ old('phone', $profile->phone) }}">
           </div>
         </td>
       </tr>
@@ -100,13 +107,15 @@
         <td>:</td>
         <td>
           <select class="form-select" name="gender" aria-label="Default select example">
-            @if ($profile->gender=='Laki-laki')
+            <option value="Laki-laki" {{ old('gender', $profile->gender) == 'Laki-laki' ? 'selected' : '' }}>Laki-laki</option>
+            <option value="Perempuan" {{ old('gender', $profile->gender) == 'Perempuan' ? 'selected' : '' }}>Perempuan</option>
+            {{-- @if ($profile->gender=='Laki-laki')
             <option value="Laki-laki" selected>Laki-laki</option>
             <option value="Perempuan">Perempuan</option>
             @else
             <option value="Laki-laki">Laki-laki</option>
             <option value="Perempuan" selected>Perempuan</option>
-            @endif
+            @endif --}}
           </select>
         </td>
       </tr>
