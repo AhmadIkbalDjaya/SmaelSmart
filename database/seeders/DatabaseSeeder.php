@@ -8,6 +8,7 @@ use App\Models\Claass;
 use App\Models\Course;
 use App\Models\Student;
 use App\Models\Teacher;
+use App\Models\Announcement;
 use App\Models\Course_Student;
 use Illuminate\Database\Seeder;
 
@@ -20,6 +21,13 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
+        // announcment
+        Announcement::create([
+            'title' => 'Pengumuman Libur',
+            'content' => 'Besok Hari Minggu Sekolah Libur',
+        ]);
+        
+        
         // user
         User::create([
             'username' => 'admin',
@@ -28,28 +36,46 @@ class DatabaseSeeder extends Seeder
             'level' => 1,
         ]);
         User::create([
-            'username' => 'suha',
+            'username' => '4100',
             'password' => bcrypt('password'),
             'name'=> 'Suharman Syah Aliah',
             'level' => 2,
         ]);
         User::create([
-            'username' => 'ikbal',
+            'username' => '0031',
             'password' => bcrypt('password'),
             'name'=>'Ahmad Ikbal Djaya',
             'level' => 3,
         ]);
         User::create([
-            'username' => 'fahrul',
+            'username' => '6100',
             'password' => bcrypt('password'),
             'name'=>'Fahrul Rasyid',
             'level' => 2,
         ]);
         User::create([
-            'username' => 'atira',
+            'username' => '1200',
             'password' => bcrypt('password'),
             'name'=>'Atira Abdi',
             'level' => 2,
+        ]);
+        User::create([
+            'username' => '0011',
+            'password' => bcrypt('password'),
+            'name'=>'Erron Lie',
+            'level' => 3,
+        ]);
+        User::create([
+            'username' => '0088',
+            'password' => bcrypt('password'),
+            'name'=>'Azhim Luthfi',
+            'level' => 3,
+        ]);
+        User::create([
+            'username' => '0042',
+            'password' => bcrypt('password'),
+            'name'=>'Alfitrah Arima',
+            'level' => 3,
         ]);
 
         // claass
@@ -86,6 +112,24 @@ class DatabaseSeeder extends Seeder
             'phone' => '081241250245',
             'gender' => 'Laki-laki',
         ]);
+        Student::create([
+            'user_id' => 6,
+            'email' => 'erron@gmail.com',
+            'phone' => '081241250245',
+            'gender' => 'Laki-laki',
+        ]);
+        Student::create([
+            'user_id' => 7,
+            'email' => 'azhim@gmail.com',
+            'phone' => '081241250245',
+            'gender' => 'Laki-laki',
+        ]);
+        Student::create([
+            'user_id' => 8,
+            'email' => 'fifi@gmail.com',
+            'phone' => '081241250245',
+            'gender' => 'Perempuan',
+        ]);
 
         // course
         Course::create([
@@ -110,12 +154,28 @@ class DatabaseSeeder extends Seeder
             'student_id' => 1,
         ]);
         Course_Student::create([
+            'course_id' => 1,
+            'student_id' => 3,
+        ]);
+        Course_Student::create([
+            'course_id' => 1,
+            'student_id' => 4,
+        ]);
+        Course_Student::create([
             'course_id' => 2,
             'student_id' => 1,
         ]);
         Course_Student::create([
+            'course_id' => 2,
+            'student_id' => 3,
+        ]);
+        Course_Student::create([
             'course_id' => 3,
             'student_id' => 1,
+        ]);
+        Course_Student::create([
+            'course_id' => 3,
+            'student_id' => 2,
         ]);
 
 

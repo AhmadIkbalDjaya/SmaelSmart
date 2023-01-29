@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('teachers', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id');
+            $table->foreignId('user_id')->constrained()->onDelete('cascade');;
             $table->string('email');
             $table->string('phone');
             $table->enum('gender', ['Laki-laki', 'Perempuan']);

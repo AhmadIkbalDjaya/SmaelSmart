@@ -11,6 +11,7 @@ use App\Models\Course_Student;
 
 class UserController extends Controller
 {
+
     public function profile(User $user){
         if($user->level == 3){
             $profile = $user->student;
@@ -24,12 +25,14 @@ class UserController extends Controller
         ]);
     }
 
+
     public function index () {
         return view('user', [
             "title" => "Manage User",
             "users" => User::whereNot('id', '1')->get(),
         ]);
     }
+
 
     public function show(User $user) {
         if($user->level == 3){
@@ -43,15 +46,17 @@ class UserController extends Controller
         ]);
     }
 
+
     public function create(){
         return view('user-add', [
             "title" => "Tambah User",
         ]);
     }
 
+
     public function store(Request $request) {
         $validated = $request->validate([
-            'username' => 'required|max:255',
+            'username' => 'required|max:255|unique:users',
             'password' => 'required|min:8|max:255',
             'name' => 'required|max:255',
             'level' => 'required|in:2,3',
@@ -82,8 +87,9 @@ class UserController extends Controller
         }elseif($validated['level'] == 2){
             Teacher::create($profile);
         }
-        return redirect('/');
+        return redirect('/user')->with('success', 'User Baru Berhasil Ditambahkan');
     }
+
 
     public function edit(User $user)
     {
@@ -97,6 +103,7 @@ class UserController extends Controller
             "profile" => $profile,
         ]);
     }
+
 
     public function update(Request $request){
         $validated = $request->validate([
@@ -166,5 +173,20 @@ class UserController extends Controller
 
         // dd($validated['password']);
         return redirect('/user');
+    }
+
+
+    public function destroy(User $user){
+        // dd($user->level);
+        // if ($user->level == 3) {
+        //     $student_id = Student::where('user_id', $user->id)->pluck('id')->first();
+        //     // dd($student_id);
+        // } else {
+        //     $teacher_id = Teacher::where('user_id', $user->id)->pluck('id')->first();
+        //     dd($teacher_id);
+        // }
+        
+        User::destroy($user->id);
+        return redirect('/user')->with('success', 'User Berhasil di Hapus');
     }
 }

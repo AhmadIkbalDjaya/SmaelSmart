@@ -61,3 +61,4 @@ Route::post('/user/add', [UserController::class, 'store']);
 // Route::get('user/{teacher:id}/{student:id}', [UserController::class, 'show'])->middleware('admin');
 Route::get('/user/{user:username}', [UserController::class, 'show'])->middleware('admin');
 Route::get('/user/edit/{user:username}', [UserController::class, 'edit'])->middleware('admin');
+Route::delete('/user/{user}', [UserController::class, 'destroy'])->middleware('admin');

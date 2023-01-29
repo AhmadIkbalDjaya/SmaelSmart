@@ -6,7 +6,7 @@
         <i class="fa-solid fa-bars"></i>
       </label>
       <a href="/">
-        <span class="mb-0 h3">Navbar</span>
+        <span class="mb-0 h3">Smael Smart</span>
       </a>
     </div>
     <div class="nav-right d-flex">
@@ -16,7 +16,9 @@
         <button class="dropdown-toggle" type="button" data-bs-toggle="dropdown">
         </button>
         <ul class="dropdown-menu dropdown-menu-end mt-3">
+          @if (auth()->user()->level != 1)
           <li><a class="dropdown-item" href="/profile/{{ auth()->user()->username }}"><i class="fa-solid fa-user"></i> Profile</a></li>
+          @endif
           <li><a class="dropdown-item" href="#"><i class="fa-solid fa-gear"></i> Setting</a></li>
           <li>
             <form action="/logout" method="post">

@@ -11,7 +11,13 @@
     <div class="container-fluid box1 py-2">
       <h3>Manage User</h3>
       <p>Tambah, Edit atau Hapus User</p>
-      <a href="/user/add" class="btn btn-primary">Tambah User</a>
+      <a href="/user/add" class="btn btn-primary mb-2">Tambah User</a>
+      @if (session()->has('success'))
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            {{ session('success') }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+      @endif
     </div>
   </div>
   <div class="col-12 my-3">
@@ -47,10 +53,10 @@
 
             <a href="/user/{{ $user->username }}" class="badge bg-info">Detail</a>
             <a href="/user/edit/{{ $user->username }}" class="badge bg-warning">Edit</a>
-              <form action="" method="post" class="d-inline">
+              <form action="/user/{{ $user->id }}" method="post" class="d-inline">
                 @method('delete')
                 @csrf
-                <button class="badge bg-danger border-0" onclick="return confirm('Are you sure?')">Delete</button>
+                <button class="badge bg-danger border-0" onclick="return confirm('Yakin Ingin Menghapus User?')">Delete</button>
               </form>
           </td>
         </tr>
