@@ -8,6 +8,7 @@ use App\Http\Controllers\CourseController;
 use App\Http\Controllers\RaportController;
 use App\Http\Controllers\CalenderController;
 use App\Http\Controllers\ControlCardController;
+use App\Http\Controllers\AnnouncementController;
 use App\Http\Controllers\CourseMaterialController;
 
 /*
@@ -62,3 +63,8 @@ Route::post('/user/add', [UserController::class, 'store']);
 Route::get('/user/{user:username}', [UserController::class, 'show'])->middleware('admin');
 Route::get('/user/edit/{user:username}', [UserController::class, 'edit'])->middleware('admin');
 Route::delete('/user/{user}', [UserController::class, 'destroy'])->middleware('admin');
+
+// announcement
+// Route::get('/announcement', [AnnouncementController::class, 'index'])->middleware('admin');
+
+Route::resource('/announcement', AnnouncementController::class)->middleware('admin');

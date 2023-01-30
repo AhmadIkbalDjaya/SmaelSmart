@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Course;
+use App\Models\Course_Student;
 use App\Models\Announcement;
 use Illuminate\Http\Request;
 
@@ -14,7 +16,19 @@ class AnnouncementController extends Controller
      */
     public function index()
     {
-        //
+        // $last_announcement = Announcement::latest()->pluck('expire_date')->first();
+        // if(strtotime($last_announcement) > time()){
+        //     $announcement = $last_announcement;
+        // }else{
+        //     $announcement = 'Tidak ada pengumuman terbaru';
+        // }
+        // dd($announcement);
+        return view('announcement.index', [
+            "title" => "Pengumuman",
+            "user_course" => Course_Student::get_user_course(),
+            "announcements" => Announcement::orderBy('expire_date', 'desc')->get(),
+            "active_announcement" => Announcement::getAnnouncement(),
+        ]);
     }
 
     /**
@@ -24,7 +38,10 @@ class AnnouncementController extends Controller
      */
     public function create()
     {
-        //
+        return view('announcement.create', [
+            "title" => "Tambah pengumuman",
+            "user_course" => Course_Student::get_user_course(),
+        ]);
     }
 
     /**
@@ -35,7 +52,13 @@ class AnnouncementController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validated = $request->validate([
+            "title" => 'required|max:255',
+            "content" => 'required|max:255',
+            "expire_date" => 'required|date',
+        ]);
+        Announcement::create($validated);
+        return redirect('/announcement')->with('success', 'Pengumuman Berhasil Ditambahkan');
     }
 
     /**
@@ -46,7 +69,11 @@ class AnnouncementController extends Controller
      */
     public function show(Announcement $announcement)
     {
-        //
+        return view('announcement.show', [
+            "title" => "Detail Pengumuman",
+            "user_course" => Course_Student::get_user_course(),
+            "announcement" => $announcement,
+        ]);
     }
 
     /**
@@ -57,7 +84,11 @@ class AnnouncementController extends Controller
      */
     public function edit(Announcement $announcement)
     {
-        //
+        return view('announcement.edit', [
+            "title" => "Edit Pengumuman",
+            "user_course" => Course_Student::get_user_course(),
+            "announcement" => $announcement,
+        ]);
     }
 
     /**
@@ -69,7 +100,13 @@ class AnnouncementController extends Controller
      */
     public function update(Request $request, Announcement $announcement)
     {
-        //
+        $validated = $request->validate([
+            "title" => 'required|max:255',
+            "content" => 'required|max:255',
+            "expire_date" => 'required|date',
+        ]);
+        Announcement::where('id', $announcement->id)->update($validated);
+        return redirect('/announcement')->with('success', 'Data Berhasil Di Update');
     }
 
     /**
@@ -80,6 +117,7 @@ class AnnouncementController extends Controller
      */
     public function destroy(Announcement $announcement)
     {
-        //
+        Announcement::destroy($announcement->id);
+        return redirect('/announcement')->with('success', "Pengumuman Berhasil Dihapus");
     }
 }

@@ -25,8 +25,13 @@ class DatabaseSeeder extends Seeder
         Announcement::create([
             'title' => 'Pengumuman Libur',
             'content' => 'Besok Hari Minggu Sekolah Libur',
+            'expire_date' => '2023-01-31',
         ]);
-        
+        Announcement::create([
+            'title' => 'Pengumuman Kerja Bakti',
+            'content' => 'Besok Semua membawa sapu untuk membersihkan sekolah',
+            'expire_date' => '2023-02-1',
+        ]);
         
         // user
         User::create([

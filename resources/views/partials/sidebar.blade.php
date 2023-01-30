@@ -29,6 +29,7 @@
     @if (auth()->user()->level == 1)
     {{-- <li><a href="/user/add" class="{{ Request::is('raport') ? 'active-page' : '' }}"><i class="fa-sharp fa-solid fa-book"></i>Add User</a></li> --}}
     <li><a href="/user" class="{{ Request::is('user') ? 'active-page' : '' }}"><i class="fa-solid fa-user"></i>User</a></li>
+    <li><a href="/announcement" class="{{ Request::is('announcement*') ? 'active-page' : '' }}"><i class="fa-solid fa-user"></i>Announcement</a></li>
     @endif
   </ul>
   <hr class="mx-2 line-sidebar">

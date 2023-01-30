@@ -17,6 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string('title');
             $table->string('content');
+            $table->date('expire_date');
             $table->timestamps();
         });
     }

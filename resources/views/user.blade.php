@@ -57,11 +57,11 @@
 
             <a href="/user/{{ $user->username }}" class="badge bg-info text-decoration-none">Detail</a>
             <a href="/user/edit/{{ $user->username }}" class="badge bg-warning text-decoration-none">Edit</a>
-              <form action="/user/{{ $user->id }}" method="post" class="d-inline">
-                @method('delete')
-                @csrf
-                <button class="badge bg-danger border-0" onclick="return confirm('Yakin Ingin Menghapus User?')">Delete</button>
-              </form>
+            <form action="/user/{{ $user->id }}" method="post" class="d-inline">
+              @method('delete')
+              @csrf
+              <button class="badge bg-danger border-0" onclick="return confirm('Yakin Ingin Menghapus User?')">Delete</button>
+            </form>
           </td>
         </tr>
         @endforeach

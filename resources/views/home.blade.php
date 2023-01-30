@@ -8,10 +8,8 @@
 @section('main')
 <div class="container justify-content-evenly">
   <section class="main-content-body">
-    <div class="pengumuman-box box1 mb-3 p-1">
-      <h3>Pengumuman</h3>
-      <h5>Judul Pengumuman</h5>
-      <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Odit pariatur quasi dignissimos laudantium animi nam libero voluptas eaque blanditiis officiis excepturi, obcaecati odio, eligendi eveniet quaerat fugiat adipisci. Aut, officia?</p>
+    <div class="pengumuman-box mb-3">
+      @include('partials.announcement')
     </div>
     @if (auth()->user()->level != 1)
     <div class="your-class-box box1 mb-3 p-1">
