@@ -31,7 +31,7 @@ class UserController extends Controller
     public function index () {
         return view('user', [
             "title" => "Manage User",
-            "users" => User::whereNot('id', '1')->get(),
+            "users" => User::whereNot('id', '1')->orderBy('created_at', 'desc')->get(),
         ]);
     }
 

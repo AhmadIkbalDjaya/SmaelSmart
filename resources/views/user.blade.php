@@ -21,13 +21,14 @@
     </div>
   </div>
   <div class="col-12 my-3">
-    <table class="table box1">
+    <table class="table box1 table-bordered user-table">
       <thead>
         <tr>
           <th scope="col">No</th>
           <th scope="col">Username</th>
           <th scope="col">Name</th>
           <th scope="col">Role</th>
+          <th scope="col">Update On</th>
           <th scope="col">Action</th>
         </tr>
       </thead>
@@ -45,14 +46,17 @@
             @endif
           </td>
           <td>
+            {{ $user->updated_at->format('d-m-Y') }}
+          </td>
+          <td>
             {{-- @if ($user->level==2)
             <a href="/userT/{{ $user->teacher->id }}" class="badge bg-info">Detail</a>
             @else
             <a href="/user/{{ $user->student->id }}" class="badge bg-info">Detail</a>
             @endif --}}
 
-            <a href="/user/{{ $user->username }}" class="badge bg-info">Detail</a>
-            <a href="/user/edit/{{ $user->username }}" class="badge bg-warning">Edit</a>
+            <a href="/user/{{ $user->username }}" class="badge bg-info text-decoration-none">Detail</a>
+            <a href="/user/edit/{{ $user->username }}" class="badge bg-warning text-decoration-none">Edit</a>
               <form action="/user/{{ $user->id }}" method="post" class="d-inline">
                 @method('delete')
                 @csrf

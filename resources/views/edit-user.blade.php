@@ -53,7 +53,12 @@
         <td>:</td>
         <td>
           <div class="mb-3">
-            <input type="text" name="name" class="form-control" id="name" value="{{ old('name', $profile->user->name) }}">
+            <input type="text" name="name" class="form-control @error('name') is-invalid @enderror" id="name" value="{{ old('name', $profile->user->name) }}">
+            @error('name')
+              <div class="invalid-feedback">
+                  {{ $message }}
+              </div>
+            @enderror
           </div>
         </td>
       </tr>
@@ -89,7 +94,12 @@
         <td>:</td>
         <td>
           <div class="mb-3">
-            <input type="email" name="email" class="form-control" id="email" value="{{ old('email', $profile->email) }}">
+            <input type="email" name="email" class="form-control @error('email') is-invalid @enderror" id="email" value="{{ old('email', $profile->email) }}">
+            @error('email')
+              <div class="invalid-feedback">
+                  {{ $message }}
+              </div>
+            @enderror
           </div>
         </td>
       </tr>
@@ -98,7 +108,12 @@
         <td>:</td>
         <td>
           <div class="mb-3">
-            <input type="text" name="phone" class="form-control" id="phone" value="{{ old('phone', $profile->phone) }}">
+            <input type="text" name="phone" class="form-control @error('phone') is-invalid @enderror" id="phone" value="{{ old('phone', $profile->phone) }}">
+            @error('phone')
+              <div class="invalid-feedback">
+                  {{ $message }}
+              </div>
+            @enderror
           </div>
         </td>
       </tr>

@@ -20,11 +20,11 @@
           <li><a class="dropdown-item" href="/profile/{{ auth()->user()->username }}"><i class="fa-solid fa-user"></i> Profile</a></li>
           @endif
           <li><a class="dropdown-item" href="#"><i class="fa-solid fa-gear"></i> Setting</a></li>
-          <li>
+          <li class="d-block">
             <form action="/logout" method="post">
               @csrf
               <a class="dropdown-item"><i class="fa-solid fa-right-from-bracket"></i>
-                <button type="submit" class="logout-button">Logout</button>
+                <button type="submit" class="logout-button w-100 text-start">Logout</button>
               </a>
               {{-- <button type="submit"><i class="fa-solid fa-right-from-bracket"></i> Logout</button> --}}
             </form>
