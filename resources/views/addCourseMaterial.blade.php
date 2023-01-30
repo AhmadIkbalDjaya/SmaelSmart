@@ -35,11 +35,11 @@
           <input type="hidden" name="teacher_id" value="{{ $course->teacher->id }}">
           <input type="hidden" name="course_id" value="{{ $course->id }}">
           <div class="mb-3">
-            <label for="Judul Materi" class="form-label">Judul Materi</label>
+            <label for="Judul Materi" class="form-label">Judul Materi <span class="required-field">*</span> </label>
             <input type="text" name="title" class="form-control" id="Judul Materi" placeholder="Judul Materi">
           </div>
           <div class="mb-3">
-            <label for="formFile" class="form-label">File</label>
+            <label for="formFile" class="form-label">File <span class="required-field">*</span> </label>
             <input class="form-control" type="file" name="file" id="formFile">
           </div>
           <button type="submit" name="submit" class="btn btn-primary mb-3">Tambah Materi</button>

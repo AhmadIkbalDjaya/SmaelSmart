@@ -35,7 +35,7 @@
     {{-- <input type="hidden" name="teacher_id" value="{{ $profile->user->id }}"> --}}
     <table class="table table-sm table-borderless d-inline">
       <tr>
-        <td>Username</td>
+        <td>Username <span class="required-field">*</span> </td>
         <td>:</td>
         <td>
           <div class="mb-3">
@@ -49,7 +49,7 @@
         </td>
       </tr>
       <tr>
-        <td>Nama</td>
+        <td>Nama <span class="required-field">*</span> </td>
         <td>:</td>
         <td>
           <div class="mb-3">
@@ -68,7 +68,7 @@
         </td>
       </tr>
       <tr>
-        <td>Role</td>
+        <td>Role <span class="required-field">*</span> </td>
         <td>:</td>
         <td>
           <select class="form-select" name="level" aria-label="Default select example">
@@ -85,7 +85,7 @@
         </td>
       </tr>
       <tr>
-        <td>Email</td>
+        <td>Email <span class="required-field">*</span> </td>
         <td>:</td>
         <td>
           <div class="mb-3">
@@ -94,7 +94,7 @@
         </td>
       </tr>
       <tr>
-        <td>Nomor Telepon</td>
+        <td>Nomor Telepon <span class="required-field">*</span> </td>
         <td>:</td>
         <td>
           <div class="mb-3">
@@ -103,7 +103,7 @@
         </td>
       </tr>
       <tr>
-        <td>Jenis Kelamin</td>
+        <td>Jenis Kelamin <span class="required-field">*</span> </td>
         <td>:</td>
         <td>
           <select class="form-select" name="gender" aria-label="Default select example">

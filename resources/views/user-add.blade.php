@@ -20,7 +20,7 @@
       <h5>User</h5>
       <div class="form-floating mb-3">
         <input type="text" name="username" class="form-control @error('username') is-invalid @enderror" value="{{ old('username') }}" id="floatingInput" placeholder="Email">
-        <label for="floatingInput">Username</label>
+        <label for="floatingInput">Username <span class="required-field">*</span> </label>
         @error('username')
           <div class="invalid-feedback">
               {{ $message }}
@@ -29,7 +29,7 @@
       </div>
       <div class="form-floating mb-3">
         <input type="password" name="password" class="form-control @error('password') is-invalid @enderror" id="floatingPassword" placeholder="Password">
-        <label for="floatingPassword">Password</label>
+        <label for="floatingPassword">Password <span class="required-field">*</span> </label>
         @error('password')
           <div class="invalid-feedback">
               {{ $message }}
@@ -38,7 +38,7 @@
       </div>
       <div class="form-floating mb-3">
         <input type="text" name="name" class="form-control @error('name') is-invalid @enderror" value="{{ old('name') }}" id="floatingName" placeholder="Name">
-        <label for="floatingName">Name</label>
+        <label for="floatingName">Name <span class="required-field">*</span> </label>
         @error('name')
           <div class="invalid-feedback">
               {{ $message }}
@@ -63,7 +63,7 @@
       <h5>Profile</h5>
       <div class="form-floating mb-3">
         <input type="email" name="email" class="form-control @error('email') is-invalid @enderror" value="{{ old('email') }}" id="floatingInput" placeholder="name@example.com">
-        <label for="floatingInput">Email</label>
+        <label for="floatingInput">Email <span class="required-field">*</span> </label>
         @error('email')
           <div class="invalid-feedback">
               {{ $message }}
@@ -72,7 +72,7 @@
       </div>
       <div class="form-floating mb-3">
         <input type="text" name="phone" class="form-control @error('phone') is-invalid @enderror" value="{{ old('phone') }}" id="floatingPhone" placeholder="Phone">
-        <label for="floatingPhone">Phone Number</label>
+        <label for="floatingPhone">Phone Number <span class="required-field">*</span> </label>
         @error('phone')
           <div class="invalid-feedback">
               {{ $message }}

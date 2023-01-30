@@ -10,6 +10,11 @@
   border-radius: 5px;
 }
 
+/* required input */
+.required-field{
+  color: red;
+}
+
 /* navbar */
 nav.navbar{
   background: var(--darkBlue);
