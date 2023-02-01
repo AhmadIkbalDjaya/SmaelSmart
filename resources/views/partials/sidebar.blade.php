@@ -37,7 +37,7 @@
     
     @if (auth()->user()->level != 1)
       @foreach ($user_course as $uc)
-      <li><a href="/course/{{ $uc->id }}" class="{{ Request::is('course/'.$uc->id) ? 'active-page' : '' }}"><i class="fa-solid fa-book"></i> {{ $uc->course_name }}</a></li>
+      <li><a href="/course/{{ $uc->id }}" class="{{ Request::is('course/'.$uc->id.'*') ? 'active-page' : '' }}"><i class="fa-solid fa-book"></i> {{ $uc->course_name }}</a></li>
       @endforeach
     @endif
   </ul>

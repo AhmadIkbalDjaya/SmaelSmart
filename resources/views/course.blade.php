@@ -48,7 +48,23 @@
   </div>
   <div class="col-md-6">
     <div class="container-fluid box1 py-2">
-      <h5>Tugas</h5>
+      <div class="head d-flex justify-content-between">
+        <h5 class="">Tugas</h5>
+        @can('teacher')
+          <a href="/course/{{ $course->id }}/task/create" class="btn btn-primary">Tambah Tugas</a>
+        @endcan
+      </div>
+      <ul>
+        @if (count($tasks) > 0)
+          @foreach ($tasks as $task)
+            <li>
+              <a href="/course/{{ $course->id }}/task/{{ $task->id }}">{{ $task->name }}</a>
+            </li>
+          @endforeach
+        @else
+          <p>Belum Ada Tugas</p>
+        @endif
+      </ul>
     </div>
   </div>
   {{-- <div class="col-12">

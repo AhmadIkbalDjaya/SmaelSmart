@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\TaskController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\CourseController;
@@ -68,3 +69,5 @@ Route::delete('/user/{user}', [UserController::class, 'destroy'])->middleware('a
 // Route::get('/announcement', [AnnouncementController::class, 'index'])->middleware('admin');
 
 Route::resource('/announcement', AnnouncementController::class)->middleware('admin');
+
+Route::resource('/course/{course}/task', TaskController::class)->middleware('auth');

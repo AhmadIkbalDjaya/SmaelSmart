@@ -30,7 +30,7 @@
       <form action="/courseMaterial/{{ $material->id }}" method="post">
         @method('delete')
         @csrf
-        <button class="dropdown-item text-danger" onclick="return confirm('Are you sure?')"><i class="fa-regular fa-trash-can"></i> Hapus Materi</button>
+        <button class="dropdown-item text-danger" onclick="return confirm('Yakin Ingin EMnghapus Materi?')"><i class="fa-regular fa-trash-can"></i> Hapus Materi</button>
       </form>
       @endcan
     </div>

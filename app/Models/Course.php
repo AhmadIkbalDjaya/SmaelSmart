@@ -21,4 +21,7 @@ class Course extends Model
     public function courseMaterial(){
         return $this->hasMany(CourseMaterial::class);
     }
+    public function task(){
+        return $this->hasMany(Task::class);
+    }
 }
