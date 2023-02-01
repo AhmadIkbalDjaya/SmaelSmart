@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Course;
+use App\Models\Claass;
+use App\Models\Teacher;
 use App\Models\CourseMaterial;
 use App\Models\Course_Student;
 use Illuminate\Http\Request;
@@ -39,7 +41,11 @@ class CourseController extends Controller
      */
     public function create()
     {
-        return view('course.create');
+        return view('course.create', [
+            "title" => "Buat Course baru",
+            "claasses" => Claass::all(),
+            "teachers" => Teacher::all(),
+        ]);
     }
 
     /**
@@ -50,7 +56,13 @@ class CourseController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validated = $request->validate([
+            "course_name" => 'required',
+            "claass_id" => 'required',
+            "teacher_id" => "required"
+        ]);
+        Course::create($validated);
+        return redirect('/course')->with('success', "Course Behasil Ditambahkan");
     }
 
     /**
@@ -72,7 +84,12 @@ class CourseController extends Controller
      */
     public function edit(Course $course)
     {
-        return view('course.edit');
+        return view('course.edit', [
+            "title" => "Edit Course",
+            "course" => $course,
+            "claasses" => Claass::all(),
+            "teachers" => Teacher::all(),
+        ]);
     }
 
     /**
@@ -84,7 +101,13 @@ class CourseController extends Controller
      */
     public function update(Request $request, Course $course)
     {
-        //
+        $validated = $request->validate([
+            "course_name" => 'required',
+            "claass_id" => 'required',
+            "teacher_id" => "required"
+        ]);
+        Course::where('id', $course->id)->update($validated);
+        return redirect('/course')->with('success', 'Course berhasil di ubah');
     }
 
     /**
@@ -95,6 +118,7 @@ class CourseController extends Controller
      */
     public function destroy(Course $course)
     {
-        //
+        Course::destroy($course->id);
+        return redirect('/course')->with('success', "Course berhasil di hapus");
     }
 }
