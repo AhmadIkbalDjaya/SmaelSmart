@@ -29,7 +29,7 @@ class UserController extends Controller
 
 
     public function index () {
-        return view('user', [
+        return view('user.index', [
             "title" => "Manage User",
             "users" => User::whereNot('id', '1')->orderBy('created_at', 'desc')->get(),
         ]);
@@ -42,7 +42,7 @@ class UserController extends Controller
         }elseif($user->level == 2){
             $profile = $user->teacher;
         }
-        return view('detail-user', [
+        return view('user.show', [
             "title" => "Detail " . $profile->user->name,
             "profile" => $profile,
         ]);
@@ -50,7 +50,7 @@ class UserController extends Controller
 
 
     public function create(){
-        return view('user-add', [
+        return view('user.create', [
             "title" => "Tambah User",
         ]);
     }
@@ -100,7 +100,7 @@ class UserController extends Controller
         }elseif($user->level == 2){
             $profile = $user->teacher;
         }
-        return view('edit-user', [
+        return view('user.edit', [
             "title" => "Edit User ".$profile->user->name,
             "profile" => $profile,
         ]);

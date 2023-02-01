@@ -66,8 +66,6 @@ Route::get('/user/edit/{user:username}', [UserController::class, 'edit'])->middl
 Route::delete('/user/{user}', [UserController::class, 'destroy'])->middleware('admin');
 
 // announcement
-// Route::get('/announcement', [AnnouncementController::class, 'index'])->middleware('admin');
-
 Route::resource('/announcement', AnnouncementController::class)->middleware('admin');
-
+// task
 Route::resource('/course/{course}/task', TaskController::class)->middleware('auth');
