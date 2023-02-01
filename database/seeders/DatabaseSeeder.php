@@ -89,6 +89,11 @@ class DatabaseSeeder extends Seeder
             'homeroom_teacher_id' => 1,
             'major' => 'ipa',
         ]);
+        Claass::create([
+            'class_name' => 'XII Charles Darwin',
+            'homeroom_teacher_id' => 2,
+            'major' => 'ipa',
+        ]);
 
         // teacher
         Teacher::create([
@@ -116,24 +121,28 @@ class DatabaseSeeder extends Seeder
             'email' => 'IkbalDjaya@gmail.com',
             'phone' => '081241250245',
             'gender' => 'Laki-laki',
+            'claass_id' => 1,
         ]);
         Student::create([
             'user_id' => 6,
             'email' => 'erron@gmail.com',
             'phone' => '081241250245',
             'gender' => 'Laki-laki',
+            'claass_id' => 2,
         ]);
         Student::create([
             'user_id' => 7,
             'email' => 'azhim@gmail.com',
             'phone' => '081241250245',
             'gender' => 'Laki-laki',
+            'claass_id' => 1,
         ]);
         Student::create([
             'user_id' => 8,
             'email' => 'fifi@gmail.com',
             'phone' => '081241250245',
             'gender' => 'Perempuan',
+            'claass_id' => 1,
         ]);
 
         // course

@@ -45,7 +45,7 @@
           </div>
         @enderror
       </div>
-      <select class="form-select @error('level') is-invalid @enderror" name="level" aria-label="Default select example">
+      <select class="form-select @error('level') is-invalid @enderror select-level" name="level">
         <option value="2" {{ old('level') == '2' ? 'selected' : '' }}>Teacher</option>
         <option value="3" {{ old('level') == '3' ? 'selected' : '' }}>Student</option>
         {{-- <option value="2">Teacher</option>
@@ -79,11 +79,22 @@
           </div>
         @enderror
       </div>
-      <select class="form-select @error('gender') is-invalid @enderror" name="gender" aria-label="Default select example">
+      <select class="form-select @error('gender') is-invalid @enderror mb-3" name="gender">
         {{-- <option selected>Gender</option> --}}
         <option value="Laki-laki" {{ old('gender') == 'Laki-laki' ? 'selected' : '' }}>Laki-laki</option>
         <option value="Perempuan" {{ old('gender') == 'Perempuan' ? 'selected' : '' }}>Perempuan</option>
         @error('gender')
+          <div class="invalid-feedback">
+              {{ $message }}
+          </div>
+        @enderror
+      </select>
+      <select class="form-select @error('claass_id') is-invalid @enderror select-claass" name="claass_id" style="display: none">
+        @foreach ($claasses as $claass)
+        <option value="{{ $claass->id }}" {{ old('claass_id') == "$claass->id" ? 'selected' : '' }}>{{ $claass->class_name }}</option>
+        @endforeach
+        
+        @error('claass')
           <div class="invalid-feedback">
               {{ $message }}
           </div>

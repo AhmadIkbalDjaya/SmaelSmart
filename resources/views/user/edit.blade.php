@@ -32,6 +32,11 @@
     @csrf
     <input type="hidden" name="user_id" value="{{ $profile->user->id }}">
     <input type="hidden" name="user_level" value="{{ $profile->user->level }}">
+    @if ($profile->user->level == 3)
+      <input type="hidden" name="student_id" value="{{ $profile->id }}">
+    @else
+      <input type="hidden" name="teacher_id" value="{{ $profile->id }}">
+    @endif
     {{-- <input type="hidden" name="teacher_id" value="{{ $profile->user->id }}"> --}}
     <table class="table table-sm table-borderless d-inline">
       <tr>
@@ -76,16 +81,9 @@
         <td>Role <span class="required-field">*</span> </td>
         <td>:</td>
         <td>
-          <select class="form-select" name="level" aria-label="Default select example">
+          <select class="form-select select-level" name="level" aria-label="Default select example">
             <option value="2" {{ old('level', $profile->user->level) == '2' ? 'selected' : '' }}>Teacher</option>
             <option value="3" {{ old('level', $profile->user->level) == '3' ? 'selected' : '' }}>Student</option>
-            {{-- @if ($profile->user->level==2)
-            <option value="2" selected>Teacher</option>
-            <option value="3">Student</option>
-            @else
-            <option value="2">Teacher</option>
-            <option value="3" selected>Student</option>
-            @endif --}}
           </select>
         </td>
       </tr>
@@ -124,16 +122,22 @@
           <select class="form-select" name="gender" aria-label="Default select example">
             <option value="Laki-laki" {{ old('gender', $profile->gender) == 'Laki-laki' ? 'selected' : '' }}>Laki-laki</option>
             <option value="Perempuan" {{ old('gender', $profile->gender) == 'Perempuan' ? 'selected' : '' }}>Perempuan</option>
-            {{-- @if ($profile->gender=='Laki-laki')
-            <option value="Laki-laki" selected>Laki-laki</option>
-            <option value="Perempuan">Perempuan</option>
-            @else
-            <option value="Laki-laki">Laki-laki</option>
-            <option value="Perempuan" selected>Perempuan</option>
-            @endif --}}
           </select>
         </td>
       </tr>
+      {{-- @if ($profile->user->level == 3) --}}
+      <tr class="update-claass" style="display:none;">
+        <td>Kelas <span class="required-field">*</span> </td>
+        <td>:</td>
+        <td>
+          <select class="form-select @error('claass_id') is-invalid @enderror select-claass" name="claass_id" style="display: none">
+            @foreach ($claasses as $claass)
+            <option value="{{ $claass->id }}" {{ old('claass_id', $profile->claass_id) == "$claass->id" ? 'selected' : '' }}>{{ $claass->class_name }}</option>
+            @endforeach
+          </select>
+        </td>
+      </tr>
+      {{-- @endif --}}
       <tr>
         <td>
           <button type="submit" name="submit" class="btn btn-primary">Ubah Data User</button>

@@ -13,6 +13,9 @@ class Student extends Model
     public function user () {
         return $this->belongsTo(User::class);
     }
+    public function claass () {
+        return $this->belongsTo(Claass::class);
+    }
     public function course_student(){
         return $this->hasMany(Course_Student::class);
     }

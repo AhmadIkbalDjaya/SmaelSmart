@@ -15,4 +15,7 @@ class Claass extends Model
     public function course(){
         return $this->hasMany(Course::class);
     }
+    public function student(){
+        return $this->hasMany(Student::class);
+    }
 }

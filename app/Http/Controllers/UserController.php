@@ -8,6 +8,7 @@ use Illuminate\Validation\Rule;
 
 use App\Models\User;
 use App\Models\Student;
+use App\Models\Claass;
 use App\Models\Teacher;
 use App\Models\Course_Student;
 
@@ -52,6 +53,7 @@ class UserController extends Controller
     public function create(){
         return view('user.create', [
             "title" => "Tambah User",
+            "claasses" => Claass::all(),
         ]);
     }
 
@@ -65,7 +67,9 @@ class UserController extends Controller
             'email' => 'required|email',
             'phone' => 'required|numeric|digits_between:10,12',
             'gender' => 'required|in:Laki-laki,Perempuan',
+            'claass_id' => 'required',
         ]);
+        // dd($validated);
 
         $validated['password'] = Hash::make($validated['password']);
         $new_user = [
@@ -85,6 +89,7 @@ class UserController extends Controller
         ];
 
         if($validated['level'] == 3){
+            $profile['claass_id'] = $validated['claass_id'];
             Student::create($profile);
         }elseif($validated['level'] == 2){
             Teacher::create($profile);
@@ -103,6 +108,7 @@ class UserController extends Controller
         return view('user.edit', [
             "title" => "Edit User ".$profile->user->name,
             "profile" => $profile,
+            "claasses" => Claass::all(),
         ]);
     }
 
@@ -111,6 +117,7 @@ class UserController extends Controller
         // dd($request["username"]);
         // $username = $request["username"];
         // dd($username);
+        // dd($request);
         $validated = $request->validate([
             // 'username' => Rule::unique('users', 'username')->ignore($request->user_id), //ignore id rownya saja bukan nilai yang di ignore
             'username' => ['required', Rule::unique('users', 'username')->ignore($request->user_id)], //ignore id rownya saja bukan nilai yang di ignore
@@ -125,6 +132,7 @@ class UserController extends Controller
             'email' => 'required|email',
             'phone' => 'required|numeric|digits_between:10,12',
             'gender' => 'required|in:Laki-laki,Perempuan',
+            'claass_id' => '',
         ]);
         // dd($validated["username"]);
         // $teacher_id = Teacher::where('user_id', $request->user_id)->pluck('id')->first();
@@ -156,21 +164,26 @@ class UserController extends Controller
         if($request->user_level == 3){
             if($validated['level'] != $request->user_level){
                 // Teacher create & dan hapus data student berdasarka id
+                $update_profile['user_id'] = $request->user_id;
+                // dd($request->user_id);
+                Student::destroy($request->student_id);
                 Teacher::create($update_profile);
-                Student::destroy($request->user_level);
             }
             else{
                 // ambil id student berdasarkan user id
                 // $student_id = $user->student->id;
                 $student_id = Student::where('user_id', $request->user_id)->pluck('id')->first();
                 // Student update
+                $update_profile['claass_id'] = $validated['claass_id'];
                 Student::where('id', $student_id)->update($update_profile);
             }
         }elseif($request->user_level == 2){
             if($validated['level'] != $request->user_level){
                 // Student create
+                $update_profile['claass_id'] = $validated['claass_id'];
+                $update_profile['user_id'] = $request->user_id;
+                Teacher::destroy($request->teacher_id);
                 Student::create($update_profile);
-                Teacher::destroy($request->user_level);
             }
             else{
                 // $teacher_id = Teacher::where('user_id', $request->user_id)->first()->pluck('id');
