@@ -45,6 +45,8 @@ Route::post('/courseMaterial/add', [CourseMaterialController::class, 'store']);
 Route::get('/courseMaterial/{courseMaterial}', [CourseMaterialController::class, 'show']);
 Route::delete('/courseMaterial/{courseMaterial}', [CourseMaterialController::class, 'destroy']);
 
+// course for admin
+Route::resource('/course', CourseController::class)->middleware('admin');
 
 // user
 Route::get('/user', [UserController::class, 'index'])->middleware('admin');

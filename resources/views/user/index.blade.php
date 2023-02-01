@@ -46,7 +46,7 @@
             @endif
           </td>
           <td>
-            {{ $user->updated_at->format('d-m-Y') }}
+            {{ $user->updated_at->format('d F Y') }}
           </td>
           <td>
             {{-- @if ($user->level==2)

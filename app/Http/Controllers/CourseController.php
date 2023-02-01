@@ -26,7 +26,10 @@ class CourseController extends Controller
      */
     public function index()
     {
-        //
+        return view('course.index', [
+            "title" => "Course",
+            "courses" => Course::latest()->get(),
+        ]);
     }
 
     /**
@@ -36,7 +39,7 @@ class CourseController extends Controller
      */
     public function create()
     {
-        //
+        return view('course.create');
     }
 
     /**
@@ -58,7 +61,7 @@ class CourseController extends Controller
      */
     public function show(Course $course)
     {
-        //
+        return view('course.show');
     }
 
     /**
@@ -69,7 +72,7 @@ class CourseController extends Controller
      */
     public function edit(Course $course)
     {
-        //
+        return view('course.edit');
     }
 
     /**

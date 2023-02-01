@@ -26,7 +26,7 @@
     {{-- <li><a href="/user/add" class="{{ Request::is('raport') ? 'active-page' : '' }}"><i class="fa-sharp fa-solid fa-book"></i>Add User</a></li> --}}
     <li><a href="/user" class="{{ Request::is('user') ? 'active-page' : '' }}"><i class="fa-solid fa-users"></i>User</a></li>
     <li><a href="/announcement" class="{{ Request::is('announcement*') ? 'active-page' : '' }}"><i class="fa-solid fa-bullhorn"></i>Announcement</a></li>
-    <li><a href="" class="{{ Request::is('') ? 'active-page' : '' }}"><i class="fa-solid fa-address-book"></i>Course</a></li>
+    <li><a href="/course" class="{{ Request::is('course*') ? 'active-page' : '' }}"><i class="fa-solid fa-address-book"></i>Course</a></li>
     @endif
   </ul>
   <hr class="mx-2 line-sidebar">
