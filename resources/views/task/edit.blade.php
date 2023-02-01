@@ -30,7 +30,7 @@
         <h5 class="">Edit Tugas</h5>
       </div>
       <div class="upload-file">
-        <form action="/course/{{ $course->id }}/task/{{ $task->id }}" method="POST" enctype="multipart/form-data">
+        <form action="/userCourse/{{ $course->id }}/task/{{ $task->id }}" method="POST" enctype="multipart/form-data">
           @method('put')
           @csrf
           {{-- <input type="hidden" name="teacher_id" value="{{ $course->teacher->id }}"> --}}

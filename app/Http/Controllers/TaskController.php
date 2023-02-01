@@ -57,7 +57,7 @@ class TaskController extends Controller
         }
         Task::create($validated);
         $courseId = $request->course_id;
-        return redirect("/course/$courseId");
+        return redirect("/userCourse/$courseId");
     }
 
     /**
@@ -115,8 +115,7 @@ class TaskController extends Controller
             $validated['file'] = $request->file('file')->store('task');
         }
         Task::where('id', $task->id)->update($validated);
-        return redirect("/course/$course->id/task/$task->id");
-        dd($validated);
+        return redirect("/userCourse/$course->id/task/$task->id");
     }
 
     /**
@@ -131,6 +130,6 @@ class TaskController extends Controller
             Storage::delete($task->file);
         }
         Task::destroy($task->id);
-        return redirect("/course/$course->id");
+        return redirect("/userCourse/$course->id");
     }
 }

@@ -9,6 +9,16 @@ use Illuminate\Http\Request;
 
 class CourseController extends Controller
 {
+    public function userCourse(Course $course) {
+        return view('userCourse', [
+            "title" => "Course $course->course_name",
+            "user_course" => Course_Student::get_user_course(),
+            "course" => $course,
+            "materials" => $course->courseMaterial,
+            "tasks" => $course->task,
+        ]);
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -48,16 +58,7 @@ class CourseController extends Controller
      */
     public function show(Course $course)
     {
-        // dd($course->id);
-        // $material = $course->courseMaterial;
-        // dd($material);
-        return view('course', [
-            "title" => "Course $course->course_name",
-            "user_course" => Course_Student::get_user_course(),
-            "course" => $course,
-            "materials" => $course->courseMaterial,
-            "tasks" => $course->task,
-        ]);
+        //
     }
 
     /**

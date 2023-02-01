@@ -23,16 +23,11 @@ use App\Http\Controllers\CourseMaterialController;
 |
 */
 
-// Route::get('/', function () {
-//     return view('home');
-// })->middleware('auth');
 Route::get('/', [HomeController::class, 'index'])->middleware('auth');
+// login
 Route::get('/login', [LoginController::class, 'index'])->name('login')->middleware('guest');
 Route::post('/login', [LoginController::class, 'authenticate']);
 Route::post('/logout', [LoginController::class, 'logout'])->middleware('auth');
-// Route::get('/login', function () {
-//     return view('login');
-// });
 
 Route::get('/calender', [CalenderController::class, 'index'])->middleware('auth');
 
@@ -40,27 +35,22 @@ Route::get('/raport', [RaportController::class, 'index'])->middleware('auth');
 
 Route::get('/control-card', [ControlCardController::class, 'index'])->middleware('auth');
 
-// Route::get('/course', function () {
-//     return view('course');
-// });
-Route::get('/course/{course}', [CourseController::class, 'show'])->middleware('auth');
+Route::get('/userCourse/{course}', [CourseController::class, 'userCourse'])->middleware('auth');
 
 Route::get('/profile/{user:username}', [UserController::class, 'profile'])->middleware('auth');
-// Route::get('/profile', function () {
-//     return view('profile');
-// });
-// Route::get('/courseMaterial/{coursematerial}', [CourseMaterialController::class, '']);
+
+// material
 Route::get('/courseMaterial/add/{course}', [CourseMaterialController::class, 'create']);
 Route::post('/courseMaterial/add', [CourseMaterialController::class, 'store']);
 Route::get('/courseMaterial/{courseMaterial}', [CourseMaterialController::class, 'show']);
 Route::delete('/courseMaterial/{courseMaterial}', [CourseMaterialController::class, 'destroy']);
 
+
+// user
 Route::get('/user', [UserController::class, 'index'])->middleware('admin');
 Route::post('/user/update', [UserController::class, 'update'])->middleware('admin');
 Route::get('/user/add', [UserController::class, 'create'])->middleware('admin');
 Route::post('/user/add', [UserController::class, 'store']);
-
-// Route::get('user/{teacher:id}/{student:id}', [UserController::class, 'show'])->middleware('admin');
 Route::get('/user/{user:username}', [UserController::class, 'show'])->middleware('admin');
 Route::get('/user/edit/{user:username}', [UserController::class, 'edit'])->middleware('admin');
 Route::delete('/user/{user}', [UserController::class, 'destroy'])->middleware('admin');
@@ -68,4 +58,4 @@ Route::delete('/user/{user}', [UserController::class, 'destroy'])->middleware('a
 // announcement
 Route::resource('/announcement', AnnouncementController::class)->middleware('admin');
 // task
-Route::resource('/course/{course}/task', TaskController::class)->middleware('auth');
+Route::resource('/userCourse/{course}/task', TaskController::class)->middleware('auth');

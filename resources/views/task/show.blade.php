@@ -23,9 +23,9 @@
         </tr>
       </table>
       <div class="d-flex justify-content-between">
-        <a href="/course/{{ $course->id }}" class="text-decoration-none">< Kembali</a>
+        <a href="/userCourse/{{ $course->id }}" class="text-decoration-none">< Kembali</a>
         @can('teacher')
-        <a href="/course/{{ $course->id }}/task/{{ $task->id }}/edit" class="text-decoration-none">Edit Tugas ></a>
+        <a href="/userCourse/{{ $course->id }}/task/{{ $task->id }}/edit" class="text-decoration-none">Edit Tugas ></a>
         @endcan
       </div>
     </div>
@@ -48,7 +48,7 @@
         {{-- <p>Deadline: {{ $task->due_date }}</p> --}}
         <p>Deadline: {{ date('d F Y', strtotime($task->due_date)) }}</p>
         @can('teacher')
-        <form action="/course/{{ $course->id }}/task/{{ $task->id }}" method="post">
+        <form action="/userCourse/{{ $course->id }}/task/{{ $task->id }}" method="post">
           @method('delete')
           @csrf
           <button class="dropdown-item text-danger" onclick="return confirm('Yakin Ingin Menghpaus Tugas?')"><i class="fa-regular fa-trash-can"></i> Hapus Tugas</button>
