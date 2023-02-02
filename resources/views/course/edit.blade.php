@@ -54,6 +54,7 @@
           <td>Kelas <span class="required-field">*</span> </td>
           <td>:</td>
           <td>
+            <input type="hidden" name="claass_id_old" value="{{ $course->claass_id }}">
             <select class="form-select @error('claass_id') is-invalid @enderror select-claass" name="claass_id">
               @foreach ($claasses as $claass)
               <option value="{{ $claass->id }}" {{ old('claass_id', $course->claass_id) == "$claass->id" ? 'selected' : '' }}>{{ $claass->class_name }}</option>
