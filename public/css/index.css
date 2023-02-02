@@ -50,6 +50,12 @@ nav label{
   margin: 0;
   background: transparent;
 }
+
+@media (max-width: 576px) {
+  .nav-title, .nav-user-name{
+    display: none;
+  }
+}
 /* end navbar */
 
 
@@ -113,7 +119,20 @@ nav label{
 #humbergermenu:checked ~ main{
   margin-left: 250px;
 }
-
+#humbergermenu:checked ~ footer{
+  margin-left: 250px;
+}
+@media (max-width: 576px) {
+  .sidebar{
+    z-index: 99;
+  }
+  #humbergermenu:checked ~ main{
+    margin-left: 0px;
+  }
+  #humbergermenu:checked ~ footer{
+    margin-left: 0px;
+  }
+}
 
 /* footer */
 .footer{
@@ -150,6 +169,11 @@ main{
 }
 /* end main */
 
+/* footer */
+footer{
+  transition: all .5s;
+}
+/* end footer */
 
 /* User */
 .user-table a:hover{

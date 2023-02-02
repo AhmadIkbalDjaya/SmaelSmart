@@ -5,12 +5,12 @@
       <label for="humbergermenu" class="me-4 ms-4">
         <i class="fa-solid fa-bars"></i>
       </label>
-      <a href="/">
+      <a href="/" class="nav-title">
         <span class="mb-0 h3">Smael Smart</span>
       </a>
     </div>
     <div class="nav-right d-flex">
-      <h5 class="align-self-center me-2">{{ auth()->user()->name }}</h5>
+      <h5 class="align-self-center me-1 nav-user-name">{{ auth()->user()->name }}</h5>
       <img src="/img/profil.jpg" alt="Username" class="img-fluid rounded-circle" width="40">
       <div class="dropdown align-self-center">
         <button class="dropdown-toggle" type="button" data-bs-toggle="dropdown">
