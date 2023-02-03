@@ -32,6 +32,9 @@ Route::post('/logout', [LoginController::class, 'logout'])->middleware('auth');
 Route::get('/calender', [CalenderController::class, 'index'])->middleware('auth');
 
 Route::get('/studentRaport', [RaportController::class, 'studentRaport'])->middleware('auth');
+Route::get('/inputScore', [RaportController::class, 'inputScore'])->middleware('auth');
+Route::get('/inputScore/{course}/edit', [RaportController::class, 'inputScoreEdit'])->middleware('auth');
+Route::post('/inputScore/{course}/{score}', [RaportController::class, 'inputScoreUpdate'])->middleware('auth');
 
 Route::get('/control-card', [ControlCardController::class, 'index'])->middleware('auth');
 

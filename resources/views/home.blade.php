@@ -16,7 +16,7 @@
       <h3>Your Class</h3>
       <div class="row">
         @foreach ($user_course as $uc)
-        <div class="col-md-4 mb-2">
+        <div class="col-md-3 mb-2">
           <a href="/userCourse/{{ $uc->id }}" class="card text-decoration-none text-dark">
             <img src="/img/dump img.jpg" class="card-img-top" alt="...">
             <div class="card-body pb-0">

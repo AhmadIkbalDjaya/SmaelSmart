@@ -6,6 +6,8 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 
 use App\Models\Score;
+use App\Models\Course;
+use App\Models\Student;
 use App\Models\Course_Student;
 
 class RaportController extends Controller
@@ -35,6 +37,33 @@ class RaportController extends Controller
             "averange_score" => $average_score,
             "total_course" => $total_course,
         ]);
+    }
+
+    public function inputScore() {
+        return view('raport.input-score', [
+            "title" => "Input Nilai",
+            "user_course" => Course_Student::get_user_course(),
+        ]);
+    }
+
+    public function inputScoreEdit(Course $course) {
+        // ambil row score berdasaarkan course_id
+        // $scores = Score::where('course_id', $course->id)->get();
+        return view('raport.input-score-edit', [
+            "title" => "Input Nilai $course->course_name",
+            "user_course" => Course_Student::get_user_course(),
+            "course" => $course,
+            "scores" => Score::where('course_id', $course->id)->get(),
+        ]);
+    }
+
+    public function inputScoreUpdate(Request $request, Course $course, Score $score){
+        $validated = $request->validate([
+            "score" => ''
+        ]);
+        // dd($validated["score"]);
+        Score::where('id', $score->id)->update($validated);
+        return redirect("/inputScore/$course->id/edit")->with('success', 'Nilai berhasil di update');
     }
     /**
      * Display a listing of the resource.
