@@ -40,10 +40,6 @@ Route::get('/userCourse/{course}', [CourseController::class, 'userCourse'])->mid
 Route::get('/profile/{user:username}', [UserController::class, 'profile'])->middleware('auth');
 
 // material
-// Route::get('/courseMaterial/add/{course}', [CourseMaterialController::class, 'create']);
-// Route::post('/courseMaterial/add', [CourseMaterialController::class, 'store']);
-// Route::get('/courseMaterial/{courseMaterial}', [CourseMaterialController::class, 'show']);
-// Route::delete('/courseMaterial/{courseMaterial}', [CourseMaterialController::class, 'destroy']);
 Route::resource('userCourse/{course}/material', CourseMaterialController::class);
 
 // course for admin

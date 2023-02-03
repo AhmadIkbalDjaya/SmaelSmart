@@ -36,7 +36,9 @@
       <br>
       <div class="d-flex justify-content-between">
         <a href="/userCourse/{{ $course->id }}" class="text-decoration-none">< Kembali Ke Course</a>
+        @can('teacher')
         <a href="/userCourse/{{ $course->id }}/material/{{ $material->id }}/edit" class="text-decoration-none">Edit Materi ></a>
+        @endcan
       </div>
       @if (session()->has('success'))
         <div class="alert alert-success alert-dismissible fade show" role="alert">
