@@ -36,7 +36,7 @@ Route::get('/inputScore', [RaportController::class, 'inputScore'])->middleware('
 Route::get('/inputScore/{course}/edit', [RaportController::class, 'inputScoreEdit'])->middleware('auth');
 Route::post('/inputScore/{course}/{score}', [RaportController::class, 'inputScoreUpdate'])->middleware('auth');
 
-Route::get('/control-card', [ControlCardController::class, 'index'])->middleware('auth');
+Route::get('/controlCard', [ControlCardController::class, 'index'])->middleware('auth');
 
 Route::get('/userCourse/{course}', [CourseController::class, 'userCourse'])->middleware('auth');
 

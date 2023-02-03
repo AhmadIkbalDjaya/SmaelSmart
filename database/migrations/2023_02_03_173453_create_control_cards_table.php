@@ -13,11 +13,13 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('scores', function (Blueprint $table) {
+        Schema::create('control_cards', function (Blueprint $table) {
             $table->id();
             $table->foreignId('course_id')->constrained()->onDelete('cascade');
             $table->foreignId('student_id')->constrained()->onDelete('cascade');
-            $table->double('score')->nullable();
+            $table->boolean('daily_test')->default(0);
+            $table->boolean('assignment')->default(0);
+            $table->boolean('recitation')->default(0);
             $table->timestamps();
         });
     }
@@ -29,6 +31,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('scores');
+        Schema::dropIfExists('control_cards');
     }
 };

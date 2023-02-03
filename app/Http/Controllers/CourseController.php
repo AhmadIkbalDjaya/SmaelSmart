@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 use App\Models\CourseMaterial;
 use App\Models\Course_Student;
+use App\Models\ControlCard;
 use App\Models\Teacher;
 use App\Models\Student;
 use App\Models\Course;
@@ -80,6 +81,11 @@ class CourseController extends Controller
                 "course_id" => $course->id,
                 "student_id" => $student_id,
             ]);
+            // masukkan juga id student ke dalam tabel control card dengan course id yang baru dibuat
+            ControlCard::create([
+                "course_id" => $course->id,
+                "student_id" => $student_id,
+            ]);
         }
         return redirect('/course')->with('success', "Course Behasil Ditambahkan");
     }
@@ -136,6 +142,7 @@ class CourseController extends Controller
             foreach ($students_id as $student_id) {
                 Course_Student::where('course_id', $course->id)->where('student_id', $student_id)->delete();
                 Score::where('course_id', $course->id)->where('student_id', $student_id)->delete();
+                ControlCard::where('course_id', $course->id)->where('student_id', $student_id)->delete();
             }
             // dd('Cek DB');
 
@@ -149,6 +156,11 @@ class CourseController extends Controller
                 ]);
                 // masukkan juga id student ke dalam tabel scores dengan course id yang baru dibuat
                 Score::create([
+                    "course_id" => $course->id,
+                    "student_id" => $student_id,
+                ]);
+                // masukkan juga id student ke dalam tabel controlcard dengan course id yang baru dibuat
+                ControlCard::create([
                     "course_id" => $course->id,
                     "student_id" => $student_id,
                 ]);

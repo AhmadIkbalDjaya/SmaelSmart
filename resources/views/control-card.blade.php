@@ -7,26 +7,39 @@
 @endsection
 @section('main')
 <div class="container mx-auto row justify-content-between">
-  <div class="col-12 box1 mb-5 py-2">
-    <h5>Kartu Kontrol</h5>
-    <table class="table table-sm table-borderless d-inline">
-      <tr>
-        <td>Semester</td>
-        <td>:</td>
-        <td>Dua 2</td>
-      </tr>
-      <tr>
-        <td>Tahun Pelajaran</td>
-        <td>:</td>
-        <td>2019</td>
-      </tr>
-    </table>
-    <br>
-    <span class="badge text-bg-danger">
-      Tidak Tuntas
-    </span>
+  <div class="col-12 mb-5">
+    <div class="box1 p-2">
+      <h4>Kartu Kontrol</h4>
+      <table class="table table-sm table-borderless d-inline">
+        <tr>
+          <td>Nama Siswa</td>
+          <td>:</td>
+          <td>{{ auth()->user()->name }}</td>
+        </tr>
+        <tr>
+          <td>Nomor Induk</td>
+          <td>:</td>
+          <td>{{ auth()->user()->username }}</td>
+        </tr>
+        <tr>
+          <td>Kelas</td>
+          <td>:</td>
+          <td>{{ auth()->user()->student->claass->class_name }}</td>
+        </tr>
+      </table>
+      <br>
+      @if ($status == 1)
+        <span class="badge text-bg-success">
+          Tuntas
+        </span>
+      @else
+        <span class="badge text-bg-danger">
+          Tidak Tuntas
+        </span>
+      @endif
+    </div>
   </div>
-  <div class="col-12 p-0">
+  <div class="col-12">
     <table class="table table-bordered box1">
       <thead>
         <tr>
@@ -39,22 +52,58 @@
         </tr>
       </thead>
       <tbody>
+        @foreach ($control_courses as $control_course)
         <tr>
-          <th scope="row">1</th>
-          <th>Bahasa Inggris</th>
-          <td>Fakhrul Rasyid</td>
-          <td></td>
-          <td></td>
-          <td></td>
+          <td>{{ $loop->iteration }}</td>
+          <td>{{ $control_course->course->course_name }}</td>
+          <td>{{ $control_course->course->teacher->user->name }}</td>
+          <td>
+            @if ($control_course->daily_test == 0)
+              <span class="badge text-bg-danger w-100">
+                Tidak Tuntas
+              </span>
+            @else
+              <span class="badge text-bg-success w-100">
+                Tuntas
+              </span>
+            @endif
+          </td>
+          <td>
+            @if ($control_course->assignment == 0)
+              <span class="badge text-bg-danger w-100">
+                Tidak Tuntas
+              </span>
+            @else
+              <span class="badge text-bg-success w-100">
+                Tuntas
+              </span>
+            @endif
+          </td>
+          <td>
+            @if ($control_course->recitation == 0)
+              <span class="badge text-bg-danger w-100">
+                Tidak Tuntas
+              </span>
+            @else
+              <span class="badge text-bg-success w-100">
+                Tuntas
+              </span>
+            @endif
+          </td>
         </tr>
-        <tr>
-          <th scope="row">2</th>
-          <th>Bahasa Inggris</th>
+        @endforeach
+        {{-- <tr>
+          <td>1</td>
+          <td>Bahasa Inggris</td>
           <td>Fakhrul Rasyid</td>
+          <td>
+            <span class="badge text-bg-danger w-100">
+              Tidak Tuntas
+            </span>
+          </td>
           <td></td>
           <td></td>
-          <td></td>
-        </tr>
+        </tr> --}}
       </tbody>
     </table>
   </div>

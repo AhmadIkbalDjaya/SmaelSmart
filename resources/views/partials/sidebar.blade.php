@@ -19,7 +19,7 @@
     <li><a href="/" class="{{ Request::is('/') ? 'active-page' : '' }}"><i class="fa-solid fa-house"></i>Home</a></li>
     <li><a href="/calender" class="{{ Request::is('calender') ? 'active-page' : '' }}"><i class="fa-regular fa-calendar-days"></i>Kalender</a></li>
     @if (auth()->user()->level != 1)
-    <li><a href="/control-card" class="{{ Request::is('control-card') ? 'active-page' : '' }}"><i class="fa-solid fa-address-card"></i>Kartu Kontrol</a></li>
+    <li><a href="/controlCard" class="{{ Request::is('controlCard') ? 'active-page' : '' }}"><i class="fa-solid fa-address-card"></i>Kartu Kontrol</a></li>
     @can('student')
     <li><a href="/studentRaport" class="{{ Request::is('studentRaport') ? 'active-page' : '' }}"><i class="fa-solid fa-book-open-reader"></i>Raport</a></li>
     @endcan

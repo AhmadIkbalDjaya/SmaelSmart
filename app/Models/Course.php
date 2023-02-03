@@ -27,4 +27,7 @@ class Course extends Model
     public function score () {
         return $this->hasMany(Score::class);
     }
+    public function contorlCard(){
+        return $this->hasMany(ControlCard::class);
+    }
 }

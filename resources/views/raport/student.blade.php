@@ -111,18 +111,11 @@
               @elseif ($score->score >= 80)
                 C
               @else
-                D
+                
               @endif
             </td>
           </tr>
           @endforeach
-          {{-- <tr>
-            <td>1</td>
-            <td>Bahasa Inggris</td>
-            <td>Fahrul Rasyid</td>
-            <td>80</td>
-            <td>B</td>
-          </tr> --}}
         </table>
       </div>
     </div>

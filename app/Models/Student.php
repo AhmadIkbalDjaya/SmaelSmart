@@ -22,4 +22,7 @@ class Student extends Model
     public function score() {
         return $this->hasMany(Score::class);
     }
+    public function controlCard(){
+        return $this->hasMany(controlCard::class);
+    }
 }
