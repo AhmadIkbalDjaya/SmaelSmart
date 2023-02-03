@@ -30,7 +30,7 @@
         <h5 class="">Upload Materi</h5>
       </div>
       <div class="upload-file">
-        <form action="/courseMaterial/add" method="POST" enctype="multipart/form-data">
+        <form action="/userCourse/{{ $course->id }}/material" method="POST" enctype="multipart/form-data">
           @csrf
           <input type="hidden" name="teacher_id" value="{{ $course->teacher->id }}">
           <input type="hidden" name="course_id" value="{{ $course->id }}">

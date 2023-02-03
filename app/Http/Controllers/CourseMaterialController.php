@@ -31,7 +31,6 @@ class CourseMaterialController extends Controller
             "title" => "Tambah Materi",
             "course" => $course,
             "user_course" => Course_Student::get_user_course(),
-
         ]);
     }
 
@@ -51,11 +50,12 @@ class CourseMaterialController extends Controller
         ]);
         // dd($validatedPost);
         if($request->file('file')){
-            $validatedPost['file'] = $request->file('file')->storeAs('files', $validatedPost['title']);
+            $validatedPost['file'] = $request->file('file')->storeAs('files', time());
+            // $validatedPost['file'] = $request->file('file')->store('files');
         }
         CourseMaterial::create($validatedPost);
         $course_id = $validatedPost['course_id'];
-        return redirect("/course/$course_id");
+        return redirect("/userCourse/$course_id");
     }
 
     /**
@@ -64,15 +64,16 @@ class CourseMaterialController extends Controller
      * @param  \App\Models\CourseMaterial  $courseMaterial
      * @return \Illuminate\Http\Response
      */
-    public function show(CourseMaterial $courseMaterial)
+    public function show(Course $course, CourseMaterial $material)
     {
-        // $coba = Course::where('id', $courseMaterial->course->id)->first();
+        // $coba = Course::where('id', $material->course->id)->first();
         // dd($coba);
+        // dd($material->course);
         return view('material.show', [
-            "title" => 'Materi ' . $courseMaterial->course->course_name,
+            "title" => 'Materi ' . $material->course->course_name,
             "user_course" => Course_Student::get_user_course(),
-            "course" => Course::where('id', $courseMaterial->course->id)->first(),
-            "material" => $courseMaterial 
+            "course" => Course::where('id', $material->course->id)->first(),
+            "material" => $material 
         ]);
     }
 
@@ -82,9 +83,14 @@ class CourseMaterialController extends Controller
      * @param  \App\Models\CourseMaterial  $courseMaterial
      * @return \Illuminate\Http\Response
      */
-    public function edit(CourseMaterial $courseMaterial)
+    public function edit(Course $course, CourseMaterial $material)
     {
-        //
+        return view('material.edit',[
+            "title" => "Edit Materi",
+            "course" => $course,
+            "user_course" => Course_Student::get_user_course(),
+            "material" => $material,
+        ]);
     }
 
     /**
@@ -94,9 +100,25 @@ class CourseMaterialController extends Controller
      * @param  \App\Models\CourseMaterial  $courseMaterial
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, CourseMaterial $courseMaterial)
+    public function update(Request $request, Course $course, CourseMaterial $material)
     {
-        //
+        // dd($request->file_old);
+        $validated = $request->validate([
+            'title' => 'required',
+            'file' => 'mimes:pdf',
+        ]);
+        if($request->file('file')){
+            // dd('ada file baru');
+            Storage::delete($material->file);
+            $validated['file'] = $request->file('file')->storeAs('files', time());
+            CourseMaterial::where('id', $material->id)->update($validated);
+        }
+        elseif($request->file == null){
+            $validated["file"] = $request->file_old;
+            CourseMaterial::where('id', $material->id)->update($validated);
+            // dd('tidak ada file baru');
+        }
+        return redirect("/userCourse/$course->id/material/$material->id")->with('success', "Materi berhasil di edit");
     }
 
     /**
@@ -105,11 +127,12 @@ class CourseMaterialController extends Controller
      * @param  \App\Models\CourseMaterial  $courseMaterial
      * @return \Illuminate\Http\Response
      */
-    public function destroy(CourseMaterial $courseMaterial)
+    public function destroy(Course $course, CourseMaterial $material)
     {
-        Storage::delete($courseMaterial->file);
-        CourseMaterial::destroy($courseMaterial->id);
-        $course_id   = $courseMaterial->course_id;
-        return redirect("/course/$course_id");
+        // dd($material);
+        Storage::delete($material->file);
+        CourseMaterial::destroy($material->id);
+        $course_id   = $material->course_id;
+        return redirect("/userCourse/$course_id");
     }
 }

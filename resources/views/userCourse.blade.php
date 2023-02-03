@@ -29,7 +29,8 @@
       <div class="head d-flex justify-content-between">
         <h5 class="">Materi</h5>
         @can('teacher')
-          <a href="/courseMaterial/add/{{ $course->id }}" class="btn btn-primary">Tambah Materi</a>
+          {{-- <a href="/courseMaterial/add/{{ $course->id }}" class="btn btn-primary">Tambah Materi</a> --}}
+          <a href="/userCourse/{{ $course->id }}/material/create" class="btn btn-primary">Tambah Materi</a>
         @endcan
       </div>
       <ul class="">
@@ -37,7 +38,8 @@
           @foreach ($materials as $material)
             <li>
               {{-- <a href="{{ asset('storage/'. $material->file) }}">{{ $material->title }}</a> --}}
-              <a href="/courseMaterial/{{ $material->id }}">{{ $material->title }}</a>
+              {{-- <a href="/courseMaterial/{{ $material->id }}">{{ $material->title }}</a> --}}
+              <a href="/userCourse/{{ $course->id }}/material/{{ $material->id }}">{{ $material->title }}</a>
             </li>
           @endforeach
         @else
