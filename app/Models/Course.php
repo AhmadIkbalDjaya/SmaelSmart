@@ -24,4 +24,7 @@ class Course extends Model
     public function task(){
         return $this->hasMany(Task::class);
     }
+    public function score () {
+        return $this->hasMany(Score::class);
+    }
 }

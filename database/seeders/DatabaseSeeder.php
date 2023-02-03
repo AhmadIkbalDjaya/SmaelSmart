@@ -145,52 +145,52 @@ class DatabaseSeeder extends Seeder
             'claass_id' => 1,
         ]);
 
-        // course
-        Course::create([
-            'claass_id' => 1,
-            'course_name' => 'Fisika',
-            'teacher_id' => 1,
-        ]);
-        Course::create([
-            'claass_id' => 1,
-            'course_name' => 'Bahasa Inggris',
-            'teacher_id' => 2,
-        ]);
-        Course::create([
-            'claass_id' => 1,
-            'course_name' => 'Seni Budaya',
-            'teacher_id' => 3,
-        ]);
+        // // course
+        // Course::create([
+        //     'claass_id' => 1,
+        //     'course_name' => 'Fisika',
+        //     'teacher_id' => 1,
+        // ]);
+        // Course::create([
+        //     'claass_id' => 1,
+        //     'course_name' => 'Bahasa Inggris',
+        //     'teacher_id' => 2,
+        // ]);
+        // Course::create([
+        //     'claass_id' => 1,
+        //     'course_name' => 'Seni Budaya',
+        //     'teacher_id' => 3,
+        // ]);
 
-        // course_student
-        Course_Student::create([
-            'course_id' => 1,
-            'student_id' => 1,
-        ]);
-        Course_Student::create([
-            'course_id' => 1,
-            'student_id' => 3,
-        ]);
-        Course_Student::create([
-            'course_id' => 1,
-            'student_id' => 4,
-        ]);
-        Course_Student::create([
-            'course_id' => 2,
-            'student_id' => 1,
-        ]);
-        Course_Student::create([
-            'course_id' => 2,
-            'student_id' => 3,
-        ]);
-        Course_Student::create([
-            'course_id' => 3,
-            'student_id' => 1,
-        ]);
-        Course_Student::create([
-            'course_id' => 3,
-            'student_id' => 2,
-        ]);
+        // // course_student
+        // Course_Student::create([
+        //     'course_id' => 1,
+        //     'student_id' => 1,
+        // ]);
+        // Course_Student::create([
+        //     'course_id' => 1,
+        //     'student_id' => 3,
+        // ]);
+        // Course_Student::create([
+        //     'course_id' => 1,
+        //     'student_id' => 4,
+        // ]);
+        // Course_Student::create([
+        //     'course_id' => 2,
+        //     'student_id' => 1,
+        // ]);
+        // Course_Student::create([
+        //     'course_id' => 2,
+        //     'student_id' => 3,
+        // ]);
+        // Course_Student::create([
+        //     'course_id' => 3,
+        //     'student_id' => 1,
+        // ]);
+        // Course_Student::create([
+        //     'course_id' => 3,
+        //     'student_id' => 2,
+        // ]);
 
 
         // \App\Models\User::factory(10)->create();

@@ -20,7 +20,7 @@
     <li><a href="/calender" class="{{ Request::is('calender') ? 'active-page' : '' }}"><i class="fa-regular fa-calendar-days"></i>Kalender</a></li>
     @if (auth()->user()->level != 1)
     <li><a href="/control-card" class="{{ Request::is('control-card') ? 'active-page' : '' }}"><i class="fa-solid fa-address-card"></i>Kartu Kontrol</a></li>
-    <li><a href="/raport" class="{{ Request::is('raport') ? 'active-page' : '' }}"><i class="fa-solid fa-book-open-reader"></i>Raport</a></li>
+    <li><a href="/studentRaport" class="{{ Request::is('raport') ? 'active-page' : '' }}"><i class="fa-solid fa-book-open-reader"></i>Raport</a></li>
     @endif
     @if (auth()->user()->level == 1)
     {{-- <li><a href="/user/add" class="{{ Request::is('raport') ? 'active-page' : '' }}"><i class="fa-sharp fa-solid fa-book"></i>Add User</a></li> --}}

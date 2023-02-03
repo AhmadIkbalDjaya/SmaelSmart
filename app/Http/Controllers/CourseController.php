@@ -10,6 +10,7 @@ use App\Models\Teacher;
 use App\Models\Student;
 use App\Models\Course;
 use App\Models\Claass;
+use App\Models\Score;
 
 
 class CourseController extends Controller
@@ -68,9 +69,14 @@ class CourseController extends Controller
 
         // ambil semua id student yang memiliki claass_id yg sama dengan yang barusan dibuat
         $students_id = Student::where('claass_id', $request->claass_id)->pluck('id');
-        // masukkan semua id student ke dalam tabel course_student dengan claass id yang baru dibuat
         foreach($students_id as $student_id){
+            // masukkan semua id student ke dalam tabel course_student dengan course id yang baru dibuat
             Course_Student::create([
+                "course_id" => $course->id,
+                "student_id" => $student_id,
+            ]);
+            // masukkan juga id student ke dalam tabel scores dengan course id yang baru dibuat
+            Score::create([
                 "course_id" => $course->id,
                 "student_id" => $student_id,
             ]);
@@ -126,8 +132,10 @@ class CourseController extends Controller
             $students_id = Student::where('claass_id', $request->claass_id_old)->pluck('id');
             // dd($students_id);
             // hapus semua id student dari table course_student yang memiliki old claass_id
+            // hapus semua id student dari table score yang memiliki old claass_id
             foreach ($students_id as $student_id) {
                 Course_Student::where('course_id', $course->id)->where('student_id', $student_id)->delete();
+                Score::where('course_id', $course->id)->where('student_id', $student_id)->delete();
             }
             // dd('Cek DB');
 
@@ -139,11 +147,13 @@ class CourseController extends Controller
                     "course_id" => $course->id,
                     "student_id" => $student_id,
                 ]);
+                // masukkan juga id student ke dalam tabel scores dengan course id yang baru dibuat
+                Score::create([
+                    "course_id" => $course->id,
+                    "student_id" => $student_id,
+                ]);
             }
         }
-        // else{
-        //     // dd("Sama");
-        // }
         Course::where('id', $course->id)->update($validated);
 
 

@@ -16,17 +16,17 @@
             <tr>
               <td>Nama Siswa</td>
               <td>:</td>
-              <td>Ahmad Ikbal Djaya</td>
+              <td>{{ auth()->user()->name }}</td>
             </tr>
             <tr>
               <td>Nomor Induk</td>
               <td>:</td>
-              <td>148699</td>
+              <td>{{ auth()->user()->username }}</td>
             </tr>
             <tr>
               <td>Kelas</td>
               <td>:</td>
-              <td>XII Al-Khawarizmi</td>
+              <td>{{ auth()->user()->student->claass->class_name }}</td>
             </tr>
           </table>
         </div>
@@ -35,12 +35,12 @@
             <tr>
               <td>Jumlah Mata Pelajaran</td>
               <td>:</td>
-              <td>8 (Delapan)</td>
+              <td>{{ $total_course }}</td>
             </tr>
             <tr>
               <td>Rata-Rata Nilai</td>
               <td>:</td>
-              <td>89.40</td>
+              <td>{{ $averange_score }}</td>
             </tr>
           </table>
         </div>
@@ -97,13 +97,32 @@
             <th>Nilai</th>
             <th>Predikat</th>
           </tr>
+          @foreach ($scores as $score)
           <tr>
+            <td>{{ $loop->iteration }}</td>
+            <td>{{ $score->course->course_name }}</td>
+            <td>{{ $score->course->teacher->user->name }}</td>
+            <td>{{ $score->score }}</td>
+            <td>
+              @if ($score->score >= 93.34)
+                A
+              @elseif ($score->score >= 86.68)
+                B
+              @elseif ($score->score >= 80)
+                C
+              @else
+                D
+              @endif
+            </td>
+          </tr>
+          @endforeach
+          {{-- <tr>
             <td>1</td>
             <td>Bahasa Inggris</td>
             <td>Fahrul Rasyid</td>
             <td>80</td>
             <td>B</td>
-          </tr>
+          </tr> --}}
         </table>
       </div>
     </div>
