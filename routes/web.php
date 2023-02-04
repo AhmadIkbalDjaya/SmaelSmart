@@ -31,12 +31,15 @@ Route::post('/logout', [LoginController::class, 'logout'])->middleware('auth');
 
 Route::get('/calender', [CalenderController::class, 'index'])->middleware('auth');
 
-Route::get('/studentRaport', [RaportController::class, 'studentRaport'])->middleware('auth');
-Route::get('/inputScore', [RaportController::class, 'inputScore'])->middleware('auth');
-Route::get('/inputScore/{course}/edit', [RaportController::class, 'inputScoreEdit'])->middleware('auth');
-Route::post('/inputScore/{course}/{score}', [RaportController::class, 'inputScoreUpdate'])->middleware('auth');
+Route::get('/studentRaport', [RaportController::class, 'studentRaport'])->middleware('student');
+Route::get('/inputScore', [RaportController::class, 'inputScore'])->middleware('teacher');
+Route::get('/inputScore/{course}/edit', [RaportController::class, 'inputScoreEdit'])->middleware('teacher');
+Route::post('/inputScore/{course}/{score}', [RaportController::class, 'inputScoreUpdate'])->middleware('teacher');
 
-Route::get('/controlCard', [ControlCardController::class, 'index'])->middleware('auth');
+Route::get('/controlCard', [ControlCardController::class, 'index'])->middleware('student');
+Route::get('/inputControlCard', [ControlCardController::class, 'inputControlCard'])->middleware('teacher');
+Route::get('/inputControlCard/{course}/edit', [ControlCardController::class, 'inputControlCardEdit'])->middleware('teacher');
+Route::post('/inputControlCard/{course}/{controlCard}', [ControlCardController::class, 'inputControlCardUpdate'])->middleware('teacher');
 
 Route::get('/userCourse/{course}', [CourseController::class, 'userCourse'])->middleware('auth');
 

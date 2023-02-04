@@ -61,7 +61,6 @@ class RaportController extends Controller
         $validated = $request->validate([
             "score" => ''
         ]);
-        // dd($validated["score"]);
         Score::where('id', $score->id)->update($validated);
         return redirect("/inputScore/$course->id/edit")->with('success', 'Nilai berhasil di update');
     }

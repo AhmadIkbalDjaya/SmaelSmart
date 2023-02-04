@@ -10,6 +10,7 @@
   <div class="col-12 mb-5">
     <div class="box1 p-2">
       <h4>Kartu Kontrol</h4>
+      <p>Kartu Kontrol adalah syarat wajib yang harus di tuntaskan oleh siswa untuk dapat mengikuti ujian semester</p>
       <table class="table table-sm table-borderless d-inline">
         <tr>
           <td>Nama Siswa</td>
