@@ -102,13 +102,11 @@ class CourseMaterialController extends Controller
      */
     public function update(Request $request, Course $course, CourseMaterial $material)
     {
-        // dd($request->file_old);
         $validated = $request->validate([
             'title' => 'required',
             'file' => 'mimes:pdf',
         ]);
         if($request->file('file')){
-            // dd('ada file baru');
             Storage::delete($material->file);
             $validated['file'] = $request->file('file')->storeAs('files', time());
             CourseMaterial::where('id', $material->id)->update($validated);

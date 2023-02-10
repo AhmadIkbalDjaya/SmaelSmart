@@ -36,19 +36,39 @@
           <input type="hidden" name="course_id" value="{{ $course->id }}">
           <div class="mb-3">
             <label for="name" class="form-label">Nama Tugas <span class="required-field">*</span> </label>
-            <input type="text" name="name" class="form-control" id="name" placeholder="Nama tugas">
+            <input type="text" name="name" class="form-control @error('name') is-invalid @enderror" id="name" placeholder="Nama tugas">
+            @error('name')
+            <div class="invalid-feedback">
+                {{ $message }}
+            </div>
+            @enderror
           </div>
           <div class="mb-3">
-            <label for="description" class="form-label">Example textarea <span class="required-field">*</span> </label>
-            <textarea name="description" class="form-control" id="description" rows="3"></textarea>
+            <label for="description" class="form-label">Deskripsi Tugas <span class="required-field">*</span> </label>
+            <textarea name="description" class="form-control @error('description') is-invalid @enderror" id="description" rows="3"></textarea>
+            @error('description')
+            <div class="invalid-feedback">
+                {{ $message }}
+            </div>
+            @enderror
           </div>
           <div class="mb-3">
             <label for="formFile" class="form-label">File </label>
-            <input class="form-control" type="file" name="file" id="formFile">
+            <input class="form-control @error('file') is-invalid @enderror" type="file" name="file" id="formFile">
+            @error('file')
+            <div class="invalid-feedback">
+                {{ $message }}
+            </div>
+            @enderror
           </div>
           <div class="mb-3">
             <label for="due_date" class="form-label">Jatuh Tempo <span class="required-field">*</span> </label>
-            <input class="form-control" type="date" name="due_date" id="due_date">
+            <input type="date" name="due_date" id="due_date" class="form-control @error('due_date') is-invalid @enderror">
+            @error('due_date')
+            <div class="invalid-feedback">
+                {{ $message }}
+            </div>
+            @enderror
           </div>
           <button type="submit" name="submit" class="btn btn-primary mb-3">Tambah Tugas</button>
         </form>

@@ -36,11 +36,21 @@
           <input type="hidden" name="course_id" value="{{ $course->id }}">
           <div class="mb-3">
             <label for="Judul Materi" class="form-label">Judul Materi <span class="required-field">*</span> </label>
-            <input type="text" name="title" class="form-control" id="Judul Materi" placeholder="Judul Materi">
+            <input type="text" name="title" class="form-control @error('title') is-invalid @enderror" id="Judul Materi" placeholder="Judul Materi">
+            @error('title')
+              <div class="invalid-feedback">
+                  {{ $message }}
+              </div>
+            @enderror
           </div>
           <div class="mb-3">
             <label for="formFile" class="form-label">File <span class="required-field">*</span> </label>
-            <input class="form-control" type="file" name="file" id="formFile">
+            <input class="form-control @error('file') is-invalid @enderror" type="file" name="file" id="formFile">
+            @error('file')
+              <div class="invalid-feedback">
+                  {{ $message }}
+              </div>
+            @enderror
           </div>
           <button type="submit" name="submit" class="btn btn-primary mb-3">Tambah Materi</button>
         </form>

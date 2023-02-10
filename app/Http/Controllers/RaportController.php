@@ -28,8 +28,6 @@ class RaportController extends Controller
             $average_score = 0;
         }
         
-        
-        // dd($total_course, $average_score);
         return view('raport.student', [
             "title" => "Raport",
             "user_course" => Course_Student::get_user_course(),
@@ -59,7 +57,7 @@ class RaportController extends Controller
 
     public function inputScoreUpdate(Request $request, Course $course, Score $score){
         $validated = $request->validate([
-            "score" => ''
+            "score" => 'numeric|between:1,100'
         ]);
         Score::where('id', $score->id)->update($validated);
         return redirect("/inputScore/$course->id/edit")->with('success', 'Nilai berhasil di update');

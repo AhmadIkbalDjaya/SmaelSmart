@@ -57,18 +57,6 @@
           </form>
         </tr>
         @endforeach
-        {{-- <tr>
-          <form action="" method="post">
-            <td>1</td>
-            <td>Erron Lie</td>
-            <td>
-              <input type="number" min="0" max="100" name="score" id="score" value="98">
-            </td>
-            <td>
-              <button type="submit" class="btn btn-primary">Simpan Nilai</button>
-            </td>
-          </form>
-        </tr> --}}
       </table>
     </div>
   </div>

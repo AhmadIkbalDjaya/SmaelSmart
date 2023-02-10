@@ -42,16 +42,13 @@ class TaskController extends Controller
      */
     public function store(Request $request)
     {
-        // dd($request);
         $validated = $request->validate([
             "name" => "required|min:5|max:255",
             "description" => 'required:min:5',
-            "file" => "",
+            "file" => "mimes:jpeg,png,jpg,pdf,doc,docx,pptx",
             "due_date" => "required|date",
             "course_id" => "required",
         ]);
-        // $validated["course_id"] = $
-        // dd($validated);
         if($request->file('file')){
             $validated['file'] = $request->file('file')->store('task');
         }
@@ -105,7 +102,7 @@ class TaskController extends Controller
         $validated = $request->validate([
             "name" => "required|min:5|max:255",
             "description" => 'required:min:5',
-            "file" => "",
+            "file" => "mimes:jpeg,png,jpg,pdf,doc,docx,pptx",
             "due_date" => "required|date",
         ]);
         if($request->file('file')){

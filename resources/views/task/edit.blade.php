@@ -37,13 +37,23 @@
           <input type="hidden" name="course_id" value="{{ $course->id }}">
           <div class="mb-3">
             <label for="name" class="form-label">Nama Tugas <span class="required-field">*</span> </label>
-            <input type="text" name="name" value="{{ $task->name }}" class="form-control" id="name" placeholder="Nama tugas">
+            <input type="text" name="name" value="{{ $task->name }}" class="form-control @error('name') is-invalid @enderror" id="name" placeholder="Nama tugas">
+            @error('name')
+            <div class="invalid-feedback">
+                {{ $message }}
+            </div>
+            @enderror
           </div>
           <div class="mb-3">
-            <label for="description" class="form-label">Example textarea <span class="required-field">*</span> </label>
-            <textarea name="description" class="form-control" id="description" rows="3">
+            <label for="description" class="form-label">Deskripsi Tugas <span class="required-field">*</span> </label>
+            <textarea name="description" class="form-control @error('description') is-invalid @enderror" id="description" rows="3">
               {{ $task->description }}
             </textarea>
+            @error('description')
+            <div class="invalid-feedback">
+                {{ $message }}
+            </div>
+            @enderror
           </div>
           <div class="mb-3">
             <label for="formFile" class="form-label">File </label>
@@ -52,11 +62,21 @@
             <a href="{{ asset('storage/'. $task->file) }}" download="{{ $task->name }}" class="text-decoration-none">
               <i class="fa-solid fa-file"></i> File Sebelumnya
             </a>
-            <input class="form-control" type="file" name="file" id="formFile" value="{{ $task->file }}">
+            <input class="form-control @error('file') is-invalid @enderror" type="file" name="file" id="formFile" value="{{ $task->file }}">
+            @error('file')
+            <div class="invalid-feedback">
+                {{ $message }}
+            </div>
+            @enderror
           </div>
           <div class="mb-3">
             <label for="due_date" class="form-label">Jatuh Tempo <span class="required-field">*</span> </label>
-            <input class="form-control" type="date" name="due_date" value="{{ $task->due_date }}" id="due_date">
+            <input class="form-control @error('due_date') is-invalid @enderror" type="date" name="due_date" value="{{ $task->due_date }}" id="due_date">
+            @error('due_date')
+            <div class="invalid-feedback">
+                {{ $message }}
+            </div>
+            @enderror
           </div>
           <button type="submit" name="submit" class="btn btn-primary mb-3">Edit Tugas</button>
         </form>
