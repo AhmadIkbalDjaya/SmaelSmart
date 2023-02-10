@@ -86,12 +86,12 @@ class DatabaseSeeder extends Seeder
         // claass
         Claass::create([
             'class_name' => 'XII Al-Khawarizmi',
-            'homeroom_teacher_id' => 1,
+            'teacher_id' => 1,
             'major' => 'ipa',
         ]);
         Claass::create([
             'class_name' => 'XII Charles Darwin',
-            'homeroom_teacher_id' => 2,
+            'teacher_id' => 2,
             'major' => 'ipa',
         ]);
 

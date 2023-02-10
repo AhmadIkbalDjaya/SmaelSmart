@@ -48,44 +48,6 @@
     </div>
   </div>
   </div>
-  {{-- <div class="col-12 border py-5">
-    <div class="container-fluid">
-      <ul class="topics list-unstyled">
-        <li class="section">
-          <h3 class="section-title">
-            <a href="" class="text-decoration-none">Materi</a>
-          </h3>
-          <div class="section-body ms-3">
-            <div class="section-field">
-              <a href="" class="text-decoration-none">
-                Materi 1
-              </a>
-            </div>
-            <div class="section-desc ms-4">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus, suscipit?
-            </div>
-          </div>
-          <hr>
-        </li>
-        <li class="section">
-          <h3 class="section-title">
-            <a href="" class="text-decoration-none">Tugas</a>
-          </h3>
-          <div class="section-body ms-3">
-            <div class="section-field">
-              <a href="" class="text-decoration-none">
-                Tugas 1
-              </a>
-            </div>
-            <div class="section-desc ms-4">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus, suscipit?
-            </div>
-          </div>
-          <hr>
-        </li>
-      </ul>
-    </div>
-  </div> --}}
 </div>
 @endsection
 

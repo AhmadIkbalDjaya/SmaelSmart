@@ -11,7 +11,7 @@
     <div class="container-fluid box1 py-2">
       <h3>Manage User</h3>
       <p>Tambah, Edit atau Hapus User</p>
-      <a href="/user/add" class="btn btn-primary mb-2">Tambah User</a>
+      <a href="/user/create" class="btn btn-primary mb-2">Tambah User</a>
       @if (session()->has('success'))
         <div class="alert alert-success alert-dismissible fade show" role="alert">
             {{ session('success') }}
@@ -49,14 +49,8 @@
             {{ $user->updated_at->format('d F Y') }}
           </td>
           <td>
-            {{-- @if ($user->level==2)
-            <a href="/userT/{{ $user->teacher->id }}" class="badge bg-info">Detail</a>
-            @else
-            <a href="/user/{{ $user->student->id }}" class="badge bg-info">Detail</a>
-            @endif --}}
-
-            <a href="/user/{{ $user->username }}" class="badge bg-info text-decoration-none">Detail</a>
-            <a href="/user/edit/{{ $user->username }}" class="badge bg-warning text-decoration-none">Edit</a>
+            <a href="/user/{{ $user->id }}" class="badge bg-info text-decoration-none">Detail</a>
+            <a href="/user/{{ $user->id }}/edit" class="badge bg-warning text-decoration-none">Edit</a>
             <form action="/user/{{ $user->id }}" method="post" class="d-inline">
               @method('delete')
               @csrf
@@ -65,12 +59,6 @@
           </td>
         </tr>
         @endforeach
-        {{-- <tr>
-          <th scope="row">1</th>
-          <td>Mark</td>
-          <td>Otto</td>
-          <td>@mdo</td>
-        </tr> --}}
       </tbody>
     </table>
   </div>

@@ -126,7 +126,6 @@ class CourseController extends Controller
      */
     public function update(Request $request, Course $course)
     {
-        // dd($request->claass_id_old);
         $validated = $request->validate([
             "course_name" => 'required',
             "claass_id" => 'required',
@@ -167,7 +166,6 @@ class CourseController extends Controller
             }
         }
         Course::where('id', $course->id)->update($validated);
-
 
         return redirect('/course')->with('success', 'Course berhasil di ubah');
     }

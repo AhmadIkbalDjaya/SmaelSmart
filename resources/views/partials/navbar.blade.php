@@ -17,7 +17,7 @@
         </button>
         <ul class="dropdown-menu dropdown-menu-end mt-3">
           @if (auth()->user()->level != 1)
-          <li><a class="dropdown-item" href="/profile/{{ auth()->user()->username }}"><i class="fa-solid fa-user"></i> Profile</a></li>
+          <li><a class="dropdown-item" href="/profile/{{ auth()->user()->id }}"><i class="fa-solid fa-user"></i> Profile</a></li>
           @endif
           <li><a class="dropdown-item" href="#"><i class="fa-solid fa-gear"></i> Setting</a></li>
           <li class="d-block">

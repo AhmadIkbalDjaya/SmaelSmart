@@ -26,7 +26,7 @@
     </div>
     <div class="d-flex justify-content-between">
       <a href="/user" class="text-decoration-none">< Back To User</a>
-      <a href="/user/edit/{{ $profile->user->username }}" class="text-decoration-none">Edit User</a>
+      <a href="/user/{{ $profile->user->id }}/edit" class="text-decoration-none">Edit User</a>
     </div>
   </div>
   <div class="col-12 p-0 box1 p-3">

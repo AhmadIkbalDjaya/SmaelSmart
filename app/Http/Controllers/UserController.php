@@ -14,7 +14,6 @@ use App\Models\Course_Student;
 
 class UserController extends Controller
 {
-
     public function profile(User $user){
         if($user->level == 3){
             $profile = $user->student;
@@ -69,7 +68,6 @@ class UserController extends Controller
             'gender' => 'required|in:Laki-laki,Perempuan',
             'claass_id' => 'required',
         ]);
-        // dd($validated);
 
         $validated['password'] = Hash::make($validated['password']);
         $new_user = [
@@ -80,7 +78,6 @@ class UserController extends Controller
         ];
         
         $user = User::create($new_user);
-        // $profile = ['user_id'=>$user->id];
         $profile = [
             'email' => $validated['email'],
             'phone' => $validated['phone'],
@@ -114,18 +111,8 @@ class UserController extends Controller
 
 
     public function update(Request $request){
-        // dd($request["username"]);
-        // $username = $request["username"];
-        // dd($username);
-        // dd($request);
         $validated = $request->validate([
-            // 'username' => Rule::unique('users', 'username')->ignore($request->user_id), //ignore id rownya saja bukan nilai yang di ignore
-            'username' => ['required', Rule::unique('users', 'username')->ignore($request->user_id)], //ignore id rownya saja bukan nilai yang di ignore
-
-            // 'username' => Rule::unique('users')->where(fn ($query) => $query->where('username' ,$username)),
-            // 'username' => ['required', Rule::unique('users', 'username')->ignore($request->usernameOld)],
-            // 'username' => 'required|max:255',
-            // 'username' => "unique:users,username,$username",
+            'username' => "required|unique:users,username,$request->user_id",
             'password' => '',
             'name' => 'required|max:255',
             'level' => 'required|in:2,3',
@@ -134,11 +121,6 @@ class UserController extends Controller
             'gender' => 'required|in:Laki-laki,Perempuan',
             'claass_id' => '',
         ]);
-        // dd($validated["username"]);
-        // $teacher_id = Teacher::where('user_id', $request->user_id)->pluck('id')->first();
-        // dd($teacher_id);
-        // $student_id = Student::where('user_id', $request->user_id)->first()->pluck('id');
-        // dd($student_id);
 
         if(!$request->password){
             $validated['password'] = $request->passwordOld;
@@ -156,9 +138,6 @@ class UserController extends Controller
             'phone' => $validated['phone'],
             'gender' => $validated['gender'],
         ];
-        // dd($request->user_id);
-        // dd($validated['level']);
-        // dd($request->user_level);
         User::where('id', $request->user_id)->update($update_user);
 
         if($request->user_level == 3){
@@ -193,24 +172,12 @@ class UserController extends Controller
                 Teacher::where('id', $teacher_id)->update($update_profile);
             }
         }
-        // if($validated['level'] != $request->user_level){
-        // }
 
-        // dd($validated['password']);
         return redirect('/user');
     }
 
 
     public function destroy(User $user){
-        // dd($user->level);
-        // if ($user->level == 3) {
-        //     $student_id = Student::where('user_id', $user->id)->pluck('id')->first();
-        //     // dd($student_id);
-        // } else {
-        //     $teacher_id = Teacher::where('user_id', $user->id)->pluck('id')->first();
-        //     dd($teacher_id);
-        // }
-        
         User::destroy($user->id);
         return redirect('/user')->with('success', 'User Berhasil di Hapus');
     }

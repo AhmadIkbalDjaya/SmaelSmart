@@ -28,7 +28,8 @@
   </div>
   <div class="col-12 p-0 box1 p-3">
     <h4>Edit User</h4>
-    <form action="/user/update" method="post">
+    <form action="/user/{{ $profile->user->id }}" method="post">
+    @method('put')
     @csrf
     <input type="hidden" name="user_id" value="{{ $profile->user->id }}">
     <input type="hidden" name="user_level" value="{{ $profile->user->level }}">

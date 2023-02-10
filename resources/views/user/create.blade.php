@@ -15,7 +15,7 @@
   </div>
   <div class="col-md-6 user-form">
     <div class="container-fluid box1 py-2">
-      <form action="/user/add" method="post">
+      <form action="/user" method="post">
       @csrf
       <h5>User</h5>
       <div class="form-floating mb-3">

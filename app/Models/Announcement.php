@@ -11,8 +11,8 @@ class Announcement extends Model
     protected $guarded = ['id'];
 
     public static function getAnnouncement(){
-        $last_announcement = Announcement::latest()->pluck('expire_date')->first();
-        if(strtotime($last_announcement) > time()){
+        $last_announcement = Announcement::latest()->first();
+        if(strtotime($last_announcement->expire_date) > time()){
             return $announcement = Announcement::latest()->first();
         }else{
             return $announcement = 'none';

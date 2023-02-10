@@ -46,44 +46,6 @@
         </div>
       </div>
     </div>
-    {{-- <div class="col-md-6">
-      <table class="table table-sm table-borderless">
-        <tr>
-          <td>Nama Siswa</td>
-          <td>:</td>
-          <td>Ahmad Ikbal Djaya</td>
-        </tr>
-        <tr>
-          <td>Nomor Induk</td>
-          <td>:</td>
-          <td>148699</td>
-        </tr>
-        <tr>
-          <td>Kelas</td>
-          <td>:</td>
-          <td>XII Al-Khawarizmi</td>
-        </tr>
-      </table>
-    </div> --}}
-    {{-- <div class="col-md-6">
-      <table class="table table-sm table-borderless">
-        <tr>
-          <td>Kelas</td>
-          <td>:</td>
-          <td>XII Al-Khawarizmi</td>
-        </tr>
-        <tr>
-          <td>Semester</td>
-          <td>:</td>
-          <td>2 (dua)</td>
-        </tr>
-        <tr>
-          <td>Tahun Pelajaran</td>
-          <td>:</td>
-          <td>2019</td>
-        </tr>
-      </table>
-    </div> --}}
   </div>
   <div class="col-md-8 mb-3 capaian-kompetensi">
     <div class="box1 p-3">

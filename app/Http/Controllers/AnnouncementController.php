@@ -16,13 +16,6 @@ class AnnouncementController extends Controller
      */
     public function index()
     {
-        // $last_announcement = Announcement::latest()->pluck('expire_date')->first();
-        // if(strtotime($last_announcement) > time()){
-        //     $announcement = $last_announcement;
-        // }else{
-        //     $announcement = 'Tidak ada pengumuman terbaru';
-        // }
-        // dd($announcement);
         return view('announcement.index', [
             "title" => "Pengumuman",
             "user_course" => Course_Student::get_user_course(),

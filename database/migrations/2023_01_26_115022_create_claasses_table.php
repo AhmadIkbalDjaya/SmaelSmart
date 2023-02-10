@@ -1,8 +1,9 @@
 <?php
 
-use Illuminate\Database\Migrations\Migration;
-use Illuminate\Database\Schema\Blueprint;
+use App\Models\Teacher;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Database\Migrations\Migration;
 
 return new class extends Migration
 {
@@ -16,7 +17,7 @@ return new class extends Migration
         Schema::create('claasses', function (Blueprint $table) {
             $table->id();
             $table->string('class_name');
-            $table->foreignId('homeroom_teacher_id');
+            $table->foreignIdFor(Teacher::class);
             $table->enum('major', ['ipa', 'ips']);
             $table->timestamps();
         });

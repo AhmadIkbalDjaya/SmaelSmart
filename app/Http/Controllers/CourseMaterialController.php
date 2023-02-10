@@ -114,9 +114,9 @@ class CourseMaterialController extends Controller
             CourseMaterial::where('id', $material->id)->update($validated);
         }
         elseif($request->file == null){
+            // dd('tidak ada file baru');
             $validated["file"] = $request->file_old;
             CourseMaterial::where('id', $material->id)->update($validated);
-            // dd('tidak ada file baru');
         }
         return redirect("/userCourse/$course->id/material/$material->id")->with('success', "Materi berhasil di edit");
     }

@@ -1,8 +1,10 @@
 <?php
 
-use Illuminate\Database\Migrations\Migration;
-use Illuminate\Database\Schema\Blueprint;
+use App\Models\Course;
+use App\Models\Student;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Database\Migrations\Migration;
 
 return new class extends Migration
 {
@@ -15,8 +17,8 @@ return new class extends Migration
     {
         Schema::create('course__students', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('course_id');
-            $table->foreignId('student_id');
+            $table->foreignIdFor(Course::class)->constrained();
+            $table->foreignIdFor(Student::class)->constrained();
             $table->timestamps();
         });
     }

@@ -1,10 +1,8 @@
 <?php
 
-use App\Models\Course;
-use App\Models\Teacher;
-use Illuminate\Support\Facades\Schema;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
@@ -15,12 +13,11 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('course_materials', function (Blueprint $table) {
+        Schema::create('events', function (Blueprint $table) {
             $table->id();
             $table->string('title');
-            $table->string('file');
-            $table->foreignIdFor(Teacher::class)->constrained();
-            $table->foreignIdFor(Course::class)->constrained();
+            $table->dateTime('start');
+            $table->dateTime('end');
             $table->timestamps();
         });
     }
@@ -32,6 +29,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('course_materials');
+        Schema::dropIfExists('events');
     }
 };
